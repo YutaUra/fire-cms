@@ -1,0 +1,109 @@
+name: ci
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14, 16]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Cache Node.js modules
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install
+        run: npx lerna bootstrap --ci
+
+      - name: Build
+        run: yarn build
+        env:
+          CI: true
+
+      - name: Validate
+        run: yarn validate
+        env:
+          CI: true
+          NODE_OPTIONS: '--max_old_space_size=4096'
+
+      # - name: Generate docs
+      #   if: success() && startsWith(matrix.node-version, '14') && github.event_name == 'push' && github.ref == 'refs/heads/main'
+      #   run: npm run docs
+
+      # - name: Deploy docs
+      #   if: success() && startsWith(matrix.node-version, '14') && github.event_name == 'push' && github.ref == 'refs/heads/main'
+      #   uses: peaceiris/actions-gh-pages@v3
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     publish_dir: ./docs
+
+      - name: Publish release
+        if: success() && startsWith(matrix.node-version, '14') && github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          git config --global user.email "yuuta3594@outlook.jp"
+          git config --global user.name "YutaUra"
+          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
+          npx lerna publish --no-verify-access --yes --no-private
+        env:
+          CI: true
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  test:
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14, 16]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Cache Node.js modules
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install
+        run: npx lerna bootstrap --ci
+
+      - name: Build
+        run: yarn build
+        env:
+          CI: true
+
+      - name: Test
+        run: yarn test
+        env:
+          CI: true
+          NODE_OPTIONS: '--max_old_space_size=4096'
+
+      - name: Report coverage
+        if: startsWith(matrix.node-version, '14')
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}

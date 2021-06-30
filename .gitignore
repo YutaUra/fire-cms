@@ -1,5 +1,9 @@
 node_modules
 .DS_Store
 
-yarn-error.log
 dist
+coverage
+
+# log
+yarn-error.log
+lerna-debug.log
