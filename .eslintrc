@@ -8,5 +8,10 @@
     "func-style": ["error", "declaration"],
     "no-warning-comments": "warn"
   },
-  "ignorePatterns": ["**/__tests__/**/*", "jest.config.js"]
+  "ignorePatterns": [
+    "**/__tests__/**/*",
+    "jest.config.js",
+    "rollup.config.base.js",
+    "rollup.config.js"
+  ]
 }
