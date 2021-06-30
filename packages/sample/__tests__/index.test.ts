@@ -1,7 +1,7 @@
-'use strict';
-
-const sample = require('..');
+import sample from '../src'
 
 describe('@fire-cms/sample', () => {
-    it('needs tests');
-});
+  it('needs tests', () => {
+    sample()
+  })
+})
