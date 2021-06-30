@@ -1,0 +1,17 @@
+{
+  "name": "fire-cms",
+  "version": "0.0.0",
+  "description": "CMS for Firebase",
+  "repository": "git@github.com:YutaUra/fire-cms.git",
+  "author": "YutaUra <yuuta3594@outlook.jp>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  }
+}
