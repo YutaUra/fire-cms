@@ -1,5 +1,5 @@
-'use strict'
-
-function sample() {
+function sample(): void {
   // TODO
 }
+
+export default sample

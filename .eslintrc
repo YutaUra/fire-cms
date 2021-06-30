@@ -1,0 +1,11 @@
+{
+  "root": true,
+  "extends": ["eslint:all", "plugin:@typescript-eslint/all", "prettier"],
+  "parserOptions": {
+    "project": ["./packages/*/tsconfig.json"]
+  },
+  "rules": {
+    "func-style": ["error", "declaration"],
+    "no-warning-comments": "warn"
+  }
+}
