@@ -1,18 +1,13 @@
+import type { FireCmsPlugin } from '@fire-cms/plugin'
 import type { FirebaseOptions } from 'firebase/app'
 import type { ReactNode } from 'react'
 import { FirebaseConfigProvider } from './context'
-
-/*
- * Export const FirebaseConfigPlugin = {
- *   root: FirebaseConfigProvider,
- * }
- */
 
 export interface FirebaseConfigPluginOptions {
   firebaseOptions: FirebaseOptions
 }
 
-export class FirebaseConfigPlugin {
+export class FirebaseConfigPlugin implements FireCmsPlugin {
   private readonly firebaseOptions: FirebaseOptions
 
   public constructor({ firebaseOptions }: FirebaseConfigPluginOptions) {
