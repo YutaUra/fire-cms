@@ -22,7 +22,7 @@
     "validate:test": "jest",
     "build": "lerna exec \"rollup -c && tsc -p tsconfig.build.json\"",
     "dev": "run-p dev:*",
-    "dev:build": "lerna exec \"concurrently 'rollup -cw' 'tsc -p tsconfig.build.json --watch'\"",
+    "dev:build": "lerna exec \"concurrently 'rollup -cw' 'tsc -p tsconfig.build.json --watch'\" --parallel --scope @fire-cms/*",
     "clean": "lerna exec \"rimraf dist\" --parallel"
   },
   "lint-staged": {

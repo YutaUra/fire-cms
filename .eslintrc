@@ -23,6 +23,8 @@
     "one-var": ["error", "never"],
     "no-warning-comments": ["warn"],
     "sort-imports": ["off"],
+    "no-undefined": ["off"],
+    "max-classes-per-file": ["off"],
     "@typescript-eslint/prefer-readonly-parameter-types": ["off"]
   },
   "ignorePatterns": [
