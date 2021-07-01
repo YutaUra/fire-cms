@@ -11,6 +11,12 @@
   },
   "rules": {
     "@typescript-eslint/naming-convention": "off",
+    "@typescript-eslint/no-type-alias": [
+      "error",
+      {
+        "allowAliases": "always"
+      }
+    ],
     "react/require-default-props": "off",
     "react/react-in-jsx-scope": "off",
     "react/jsx-filename-extension": [
@@ -22,6 +28,15 @@
       }
     ],
     "react/jsx-indent": "off",
-    "react/function-component-definition": ["error", { "namedComponents": "arrow-function", "unnamedComponents": "arrow-function" }]
+    "react/function-component-definition": [
+      "error",
+      {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }
+    ],
+    "react/jsx-one-expression-per-line": [
+      "off"
+    ]
   }
 }
