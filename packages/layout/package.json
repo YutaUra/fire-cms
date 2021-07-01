@@ -1,0 +1,48 @@
+{
+  "name": "@fire-cms/layout",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "YutaUra <yuuta3594@outlook.jp>",
+  "homepage": "https://github.com/YutaUra/fire-cms#readme",
+  "license": "MIT",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "browser": "dist/umd/index.js",
+  "types": "dist/types/index.d.ts",
+  "directories": {},
+  "files": [
+    "dist"
+  ],
+  "private": true,
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YutaUra/fire-cms.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/YutaUra/fire-cms/issues"
+  },
+  "dependencies": {
+    "@fire-cms/auth": "^0.0.0",
+    "@fire-cms/plugin": "^0.0.0",
+    "@fire-cms/router": "^0.0.0",
+    "@fire-cms/toast": "^0.0.0",
+    "react-hook-form": "^7.9.0"
+  },
+  "peerDependencies": {
+    "@heroicons/react": "^1.0.1",
+    "firebase": "^9.0.0-beta.5",
+    "react": "^17.0.2"
+  },
+  "devDependencies": {
+    "@heroicons/react": "^1.0.1",
+    "@types/react": "^17.0.11",
+    "firebase": "^9.0.0-beta.5",
+    "react": "^17.0.2"
+  }
+}

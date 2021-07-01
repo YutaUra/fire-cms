@@ -10,14 +10,18 @@ const FireCmsAuthUserContext = createContext<FireCmsAuthUser>(null)
 const FireCmsAuthSetUserContext = createContext<
   Dispatch<SetStateAction<FireCmsAuthUser>>
 >(() => null)
+const FireCmsAuthIsReadyContext = createContext<boolean>(false)
+const FireCmsAuthSetIsReadyContext = createContext<
+  Dispatch<SetStateAction<boolean>>
+>(() => null)
 
-interface FireCmsAuthProviderProps {
+interface FireCmsAuthUserProviderProps {
   children: ReactNode
 }
 
-export const FireCmsAuthProvider = ({
+export const FireCmsAuthUserProvider = ({
   children,
-}: FireCmsAuthProviderProps): JSX.Element => {
+}: FireCmsAuthUserProviderProps): JSX.Element => {
   const [user, setUser] = useState<FireCmsAuthUser>(null)
 
   return (
@@ -28,6 +32,35 @@ export const FireCmsAuthProvider = ({
     </FireCmsAuthUserContext.Provider>
   )
 }
+interface FireCmsAuthIsReadyProviderProps {
+  children: ReactNode
+}
+
+export const FireCmsAuthIsReadyProvider = ({
+  children,
+}: FireCmsAuthIsReadyProviderProps): JSX.Element => {
+  const [isReady, setIsReady] = useState<boolean>(false)
+
+  return (
+    <FireCmsAuthIsReadyContext.Provider value={isReady}>
+      <FireCmsAuthSetIsReadyContext.Provider value={setIsReady}>
+        {children}
+      </FireCmsAuthSetIsReadyContext.Provider>
+    </FireCmsAuthIsReadyContext.Provider>
+  )
+}
+
+interface FireCmsAuthProviderProps {
+  children: ReactNode
+}
+
+export const FireCmsAuthProvider = ({
+  children,
+}: FireCmsAuthProviderProps): JSX.Element => (
+  <FireCmsAuthUserProvider>
+    <FireCmsAuthIsReadyProvider>{children}</FireCmsAuthIsReadyProvider>
+  </FireCmsAuthUserProvider>
+)
 
 export const useFireCmsAuthUser = (): FireCmsAuthUser =>
   useContext(FireCmsAuthUserContext)
@@ -35,6 +68,8 @@ export const useFireCmsAuthUser = (): FireCmsAuthUser =>
 export const useSetFireCmsAuthUser = (): Dispatch<
   SetStateAction<FireCmsAuthUser>
 > => useContext(FireCmsAuthSetUserContext)
+export const useFireCmsAuthIsReady = (): boolean =>
+  useContext(FireCmsAuthIsReadyContext)
 
 export const useFirebaseAuth = (): Auth => {
   const app = useFirebaseApp()
@@ -44,8 +79,16 @@ export const useFirebaseAuth = (): Auth => {
 export const FirebaseCmsAuthEffect = (): null => {
   const auth = useFirebaseAuth()
   const setUser = useSetFireCmsAuthUser()
+  const setIsReady = useContext(FireCmsAuthSetIsReadyContext)
 
-  useEffect(() => auth.onAuthStateChanged(setUser), [auth, setUser])
+  useEffect(
+    () =>
+      auth.onAuthStateChanged((user) => {
+        setUser(user)
+        setIsReady(true)
+      }),
+    [auth, setUser, setIsReady],
+  )
 
   return null
 }

@@ -1,5 +1,6 @@
 export {
   useFirebaseAuth,
+  useFireCmsAuthIsReady,
   useFireCmsAuthUser,
   useSetFireCmsAuthUser,
 } from './context'

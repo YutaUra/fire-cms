@@ -1,2 +1,6 @@
-export { useFireCmsRouterPush, useFireCmsRouterReplace } from './context'
+export {
+  useFireCmsRouterPush,
+  useFireCmsRouterQuery,
+  useFireCmsRouterReplace,
+} from './context'
 export { FireCmsRouterPlugin } from './plugin'
