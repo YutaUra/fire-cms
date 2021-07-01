@@ -29,5 +29,12 @@ to: packages/<%= packageName %>/package.json
   },
   "bugs": {
     "url": "https://github.com/YutaUra/fire-cms/issues"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.11",
+    "react": "^17.0.2"
   }
 }
