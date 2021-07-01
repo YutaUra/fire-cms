@@ -1,5 +1,5 @@
 {
-  "name": "@fire-cms/sample",
+  "name": "@fire-cms/firebase-config",
   "version": "0.0.0",
   "description": "> TODO: description",
   "author": "YutaUra <yuuta3594@outlook.jp>",
@@ -15,7 +15,7 @@
   ],
   "private": true,
   "publishConfig": {
-    "access": "restricted"
+    "access": "public"
   },
   "repository": {
     "type": "git",
@@ -26,5 +26,14 @@
   },
   "bugs": {
     "url": "https://github.com/YutaUra/fire-cms/issues"
+  },
+  "peerDependencies": {
+    "firebase": "^9.0.0-beta.5",
+    "react": "^17.0.2"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.11",
+    "firebase": "^9.0.0-beta.5",
+    "react": "^17.0.2"
   }
 }

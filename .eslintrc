@@ -1,18 +1,36 @@
 {
   "root": true,
-  "extends": ["eslint:all", "plugin:@typescript-eslint/all", "prettier"],
+  "extends": [
+    "eslint:all",
+    "plugin:@typescript-eslint/all",
+    "plugin:import/recommended",
+    "plugin:import/typescript",
+    "prettier"
+  ],
   "parserOptions": {
     "project": ["./packages/*/tsconfig.json"]
   },
+  "settings": {
+    "import/resolver": {
+      "typescript": {
+        "config": "tsconfig.json",
+        "alwaysTryTypes": true
+      }
+    }
+  },
   "rules": {
-    "func-style": ["error", "declaration"],
-    "no-warning-comments": "warn"
+    "func-style": ["error", "expression"],
+    "one-var": ["error", "never"],
+    "no-warning-comments": ["warn"],
+    "sort-imports": ["off"],
+    "@typescript-eslint/prefer-readonly-parameter-types": ["off"]
   },
   "ignorePatterns": [
     "**/__tests__/**/*",
     "jest.config.js",
     "rollup.config.base.js",
     "rollup.config.js",
+    "examples/**",
     "_templates"
   ]
 }

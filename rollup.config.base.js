@@ -34,7 +34,7 @@ export default (option) => {
       input,
       external,
       output: { format: 'cjs', sourcemap: true, dir: path.dirname(pkg.main) },
-      plugins: [typescript({ declaration: false })],
+      plugins: [typescript({ declaration: false, jsx: 'react-jsx' })],
     },
 
     // ES module (for bundlers) build.
@@ -42,7 +42,7 @@ export default (option) => {
       input,
       external,
       output: { format: 'es', sourcemap: true, dir: path.dirname(pkg.module) },
-      plugins: [typescript({ declaration: false })],
+      plugins: [typescript({ declaration: false, jsx: 'react-jsx' })],
     },
   ]
 }
