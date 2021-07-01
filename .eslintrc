@@ -27,6 +27,7 @@
     "@typescript-eslint/prefer-readonly-parameter-types": ["off"],
     "@typescript-eslint/strict-boolean-expressions": ["off"],
     "func-style": ["error", "expression"],
+    "no-void": ["off"],
     "max-classes-per-file": ["off"],
     "max-lines-per-function": ["off"],
     "no-console": ["error", { "allow": ["info", "warn", "error"] }],

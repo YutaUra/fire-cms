@@ -7,7 +7,7 @@ interface FireCmsLoginRequiredEffectProps {
   base: string
 }
 
-export const FireCmsLoginRequiredEffect = ({
+export const FireCmsLoginRequired = ({
   children,
   base,
 }: FireCmsLoginRequiredEffectProps): JSX.Element | null => {

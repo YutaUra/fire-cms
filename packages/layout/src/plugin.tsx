@@ -8,10 +8,6 @@ interface FireCmsLayoutPluginOption {
 }
 
 export class FireCmsLayoutPlugin implements FireCmsPlugin {
-  public pages = {
-    signin: SigninPage,
-  }
-
   private readonly redirectTo: string
 
   public constructor({ redirectTo }: FireCmsLayoutPluginOption) {
@@ -23,4 +19,10 @@ export class FireCmsLayoutPlugin implements FireCmsPlugin {
       {children}
     </FireCmsLayoutProvider>
   )
+
+  public getPage: FireCmsPlugin['getPage'] = (slug) => {
+    if (slug.join('/') === 'signin')
+      return { Page: SigninPage, allowAnonymous: true, allowNonStaff: true }
+    return undefined
+  }
 }
