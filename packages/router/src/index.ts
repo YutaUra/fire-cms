@@ -1,4 +1,8 @@
 export {
+  LinkComponentType,
+  LinkProps,
+  useFireCmsRouterBasePath,
+  useFireCmsRouterLinkComponent,
   useFireCmsRouterPush,
   useFireCmsRouterQuery,
   useFireCmsRouterReplace,

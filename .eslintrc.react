@@ -18,7 +18,9 @@
     "@typescript-eslint/no-type-alias": [
       "error",
       {
-        "allowAliases": "always"
+        "allowAliases": "always",
+        "allowCallbacks": "always",
+        "allowLiterals": "always"
       }
     ],
     "react/require-default-props": "off",
@@ -48,6 +50,8 @@
     "react/jsx-no-literals": ["off"],
     "react/jsx-indent-props": ["off"],
     "react/jsx-max-depth": ["error", { "max": 5 }],
+    "react/prop-types": ["off"],
+    "react/forbid-component-props": ["off"],
     "jsx-a11y/label-has-for": ["off"],
     "react/jsx-props-no-spreading": ["off"],
     "react/no-multi-comp": ["off"]

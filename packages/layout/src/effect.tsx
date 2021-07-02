@@ -4,12 +4,10 @@ import type { ReactNode } from 'react'
 
 interface FireCmsLoginRequiredEffectProps {
   children: ReactNode
-  base: string
 }
 
 export const FireCmsLoginRequired = ({
   children,
-  base,
 }: FireCmsLoginRequiredEffectProps): JSX.Element | null => {
   const authIsReady = useFireCmsAuthIsReady()
   const user = useFireCmsAuthUser()
@@ -17,7 +15,7 @@ export const FireCmsLoginRequired = ({
 
   if (!authIsReady) return null
   if (!user) {
-    push(`${base}/signin?next=${window.location.pathname}`)
+    push(`signin?next=${window.location.pathname}`)
     return null
   }
 
