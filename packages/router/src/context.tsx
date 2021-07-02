@@ -50,12 +50,20 @@ export const FireCmsRouterProvider = ({
     },
     [basePath, rawReplace],
   )
+
+  const Link = useCallback<LinkComponentType>(
+    ({ href, ...props }) => (
+      <LinkComponent href={join(basePath, href)} {...props} />
+    ),
+    [LinkComponent, basePath],
+  )
+
   return (
     <FireCmsRouterPushContext.Provider value={push}>
       <FireCmsRouterReplaceContext.Provider value={replace}>
         <FireCmsRouterQueryContext.Provider value={query}>
           <FireCmsRouterBasePathContext.Provider value={basePath}>
-            <FireCmsRouterLinkComponentContext.Provider value={LinkComponent}>
+            <FireCmsRouterLinkComponentContext.Provider value={Link}>
               {children}
             </FireCmsRouterLinkComponentContext.Provider>
           </FireCmsRouterBasePathContext.Provider>

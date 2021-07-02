@@ -9,6 +9,7 @@ const FireCmsPermissionIsStaffIsReadyContext = createContext<boolean>(false)
 const FireCmsPermissionSetIsStaffIsReadyContext = createContext<
   Dispatch<SetStateAction<boolean>>
 >(() => null)
+const FireCmsPermissionForbiddenUrlContext = createContext<string>('403')
 
 interface FireCmsPErmissionIsStaffProviderProps {
   children: ReactNode
@@ -48,14 +49,18 @@ const FireCmsPermissionIsStaffIsReadyProvider = ({
 
 interface FireCmsPermissionProviderProps {
   children: ReactNode
+  forbiddenUrl: string
 }
 
 export const FireCmsPermissionProvider = ({
   children,
+  forbiddenUrl,
 }: FireCmsPermissionProviderProps): JSX.Element => (
   <FireCmsPermissionIsStaffProvider>
     <FireCmsPermissionIsStaffIsReadyProvider>
-      {children}
+      <FireCmsPermissionForbiddenUrlContext.Provider value={forbiddenUrl}>
+        {children}
+      </FireCmsPermissionForbiddenUrlContext.Provider>
     </FireCmsPermissionIsStaffIsReadyProvider>
   </FireCmsPermissionIsStaffProvider>
 )
@@ -70,3 +75,5 @@ export const useFireCmsPermissionIsStaffIsReady = (): boolean =>
 export const useFireCmsPermissionSetIsStaffIsReady = (): Dispatch<
   SetStateAction<boolean>
 > => useContext(FireCmsPermissionSetIsStaffIsReadyContext)
+export const useFireCmsPermissionForbiddenUrl = (): string =>
+  useContext(FireCmsPermissionForbiddenUrlContext)

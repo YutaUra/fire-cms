@@ -10,6 +10,7 @@ import {
   PERMISSION_USERS_COLLECTION,
 } from './const'
 import {
+  useFireCmsPermissionForbiddenUrl,
   useFireCmsPermissionIsStaff,
   useFireCmsPermissionIsStaffIsReady,
   useFireCmsPermissionSetIsStaffContext,
@@ -44,22 +45,23 @@ export const FetchFireCmsIsStaffEffect = (): null => {
   return null
 }
 
-interface FireCmsStaffRequiredProps {
-  children: ReactNode
-  notStaffUrl: string
+interface FireCmsPermissionRequiedProps {
+  children?: ReactNode
+  allowNonStaff?: boolean
 }
 
-export const FireCmsStaffRequired = ({
+export const FireCmsPermissionRequied = ({
+  allowNonStaff = false,
   children,
-  notStaffUrl,
-}: FireCmsStaffRequiredProps): JSX.Element | null => {
+}: FireCmsPermissionRequiedProps): JSX.Element | null => {
   const isReady = useFireCmsPermissionIsStaffIsReady()
   const isStaff = useFireCmsPermissionIsStaff()
   const push = useFireCmsRouterPush()
+  const forbiddenUrl = useFireCmsPermissionForbiddenUrl()
 
   if (!isReady) return null
-  if (!isStaff) {
-    push(notStaffUrl)
+  if (!allowNonStaff && !isStaff) {
+    push(forbiddenUrl)
     return null
   }
 

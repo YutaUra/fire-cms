@@ -32,6 +32,7 @@ export class FireCmsRouterPlugin implements FireCmsPlugin {
 
   public root = ({ children }: { children: ReactNode }): JSX.Element => {
     const { push, replace, query } = this.useRouter()
+
     return (
       <FireCmsRouterProvider
         LinkComponent={this.LinkComponent}

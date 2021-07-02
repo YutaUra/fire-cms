@@ -49,7 +49,7 @@
     "react/require-optimization": ["off"],
     "react/jsx-no-literals": ["off"],
     "react/jsx-indent-props": ["off"],
-    "react/jsx-max-depth": ["error", { "max": 5 }],
+    "react/jsx-max-depth": ["warn", { "max": 5 }],
     "react/prop-types": ["off"],
     "react/forbid-component-props": ["off"],
     "jsx-a11y/label-has-for": ["off"],

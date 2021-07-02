@@ -3,6 +3,9 @@ export {
   PERMISSION_STAFF,
   PERMISSION_USERS_COLLECTION,
 } from './const'
-export { useFireCmsPermissionIsStaff } from './context'
-export { FetchFireCmsIsStaffEffect, FireCmsStaffRequired } from './effect'
+export {
+  useFireCmsPermissionForbiddenUrl,
+  useFireCmsPermissionIsStaff,
+} from './context'
+export { FetchFireCmsIsStaffEffect, FireCmsPermissionRequied } from './effect'
 export { FireCmsPermissionPlugin } from './plugin'

@@ -11,8 +11,6 @@ export interface FireCmsPlugin {
   getPage?: (slug: string[]) =>
     | {
         Page: () => JSX.Element
-        allowNonStaff?: boolean
-        allowAnonymous?: boolean
       }
     | undefined
   menus?: FireCmsMenu[]
