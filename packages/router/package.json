@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "@fire-cms/plugin": "^0.0.0",
+    "@fire-cms/react-utils": "^0.0.0",
     "url-join": "^4.0.1"
   },
   "peerDependencies": {

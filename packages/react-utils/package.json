@@ -1,5 +1,5 @@
 {
-  "name": "@fire-cms/layout",
+  "name": "@fire-cms/react-utils",
   "version": "0.0.0",
   "description": "> TODO: description",
   "author": "YutaUra <yuuta3594@outlook.jp>",
@@ -27,23 +27,11 @@
   "bugs": {
     "url": "https://github.com/YutaUra/fire-cms/issues"
   },
-  "dependencies": {
-    "@fire-cms/auth": "^0.0.0",
-    "@fire-cms/plugin": "^0.0.0",
-    "@fire-cms/router": "^0.0.0",
-    "@fire-cms/toast": "^0.0.0",
-    "@fire-cms/react-utils": "^0.0.0",
-    "react-hook-form": "^7.9.0"
-  },
   "peerDependencies": {
-    "@heroicons/react": "^1.0.1",
-    "firebase": "^9.0.0-beta.5",
     "react": "^17.0.2"
   },
   "devDependencies": {
-    "@heroicons/react": "^1.0.1",
     "@types/react": "^17.0.11",
-    "firebase": "^9.0.0-beta.5",
     "react": "^17.0.2"
   }
 }

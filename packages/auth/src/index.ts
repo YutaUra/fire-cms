@@ -2,6 +2,6 @@ export {
   useFirebaseAuth,
   useFireCmsAuthIsReady,
   useFireCmsAuthUser,
-  useSetFireCmsAuthUser,
+  useFireCmsSetAuthUser,
 } from './context'
 export { FireCmsAuthPlugin } from './plugin'

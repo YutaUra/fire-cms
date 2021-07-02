@@ -34,6 +34,7 @@
     "@types/react": "^17.0.11",
     "react": "^17.0.2",
     "@fire-cms/router": "^0.0.0",
+    "@fire-cms/react-utils": "^0.0.0",
     "@fire-cms/plugin": "^0.0.0"
   },
   "dependencies": {

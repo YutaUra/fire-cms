@@ -31,7 +31,8 @@
     "@fire-cms/plugin": "^0.0.0",
     "@fire-cms/firebase-firestore": "^0.0.0",
     "@fire-cms/router": "^0.0.0",
-    "@fire-cms/auth": "^0.0.0"
+    "@fire-cms/auth": "^0.0.0",
+    "@fire-cms/react-utils": "^0.0.0"
   },
   "peerDependencies": {
     "react": "^17.0.2"

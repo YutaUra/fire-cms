@@ -1,9 +1,12 @@
+import { createReadonly } from '@fire-cms/react-utils'
 import type { FirebaseApp, FirebaseOptions } from 'firebase/app'
 import { getApps, initializeApp } from 'firebase/app'
 import type { ReactNode } from 'react'
-import { createContext, useContext } from 'react'
 
-const FirebaseConfigContext = createContext<FirebaseOptions>({})
+const {
+  Provider: FirebaseConfigFirebaseOptionsProvider,
+  useValue: useFirebaseConfig,
+} = createReadonly<FirebaseOptions>({})
 
 export interface FirebaseConfigProviderProps {
   children?: ReactNode
@@ -14,13 +17,12 @@ export const FirebaseConfigProvider = ({
   option,
   children,
 }: FirebaseConfigProviderProps): JSX.Element => (
-  <FirebaseConfigContext.Provider value={option}>
+  <FirebaseConfigFirebaseOptionsProvider value={option}>
     {children}
-  </FirebaseConfigContext.Provider>
+  </FirebaseConfigFirebaseOptionsProvider>
 )
 
-export const useFirebaseConfig = (): FirebaseOptions =>
-  useContext(FirebaseConfigContext)
+export { useFirebaseConfig }
 
 export const useFirebaseApp = (): FirebaseApp => {
   const config = useFirebaseConfig()

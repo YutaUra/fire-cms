@@ -1,50 +1,18 @@
-import type { Dispatch, ReactNode, SetStateAction } from 'react'
-import { createContext, useCallback, useContext, useState } from 'react'
+import { createDisclosure, createUseState } from '@fire-cms/react-utils'
+import type { ReactNode } from 'react'
 
-const DashboardIsOpenContext = createContext<boolean>(false)
-const DashboardSetIsOpenContext = createContext<
-  Dispatch<SetStateAction<boolean>>
->(() => null)
+const {
+  Provider: DashboardIsOpenProvider,
+  useSetValue: _useDashboardSetIsOpen,
+  useValue: useDashboardIsOpenValue,
+} = createUseState<boolean>(false)
 
 type Provider = (props: { children?: ReactNode }) => JSX.Element
-
-const DashboardIsOpenProvider: Provider = ({ children }) => {
-  const [isOpen, setIsOpen] = useState<boolean>(false)
-  return (
-    <DashboardIsOpenContext.Provider value={isOpen}>
-      <DashboardSetIsOpenContext.Provider value={setIsOpen}>
-        {children}
-      </DashboardSetIsOpenContext.Provider>
-    </DashboardIsOpenContext.Provider>
-  )
-}
 
 export const DashboardProvider: Provider = ({ children }) => (
   <DashboardIsOpenProvider>{children}</DashboardIsOpenProvider>
 )
 
-export const useDashboardIsOpenValue = (): boolean =>
-  useContext(DashboardIsOpenContext)
+export { useDashboardIsOpenValue }
 
-export const useDashboardSetIsOpen = (): {
-  onOpen: () => void
-  onClose: () => void
-  onToggle: () => void
-} => {
-  const setIsOpen = useContext(DashboardSetIsOpenContext)
-  const onOpen = useCallback(() => {
-    setIsOpen(true)
-  }, [setIsOpen])
-  const onClose = useCallback(() => {
-    setIsOpen(false)
-  }, [setIsOpen])
-  const onToggle = useCallback(() => {
-    setIsOpen((prev) => !prev)
-  }, [setIsOpen])
-
-  return {
-    onClose,
-    onOpen,
-    onToggle,
-  }
-}
+export const useDashboardSetIsOpen = createDisclosure(_useDashboardSetIsOpen)

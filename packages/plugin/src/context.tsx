@@ -1,8 +1,9 @@
+import { createReadonly } from '@fire-cms/react-utils'
 import type { ReactNode } from 'react'
-import { createContext, useContext } from 'react'
 import type { FireCmsPlugin } from './interface'
 
-const FireCmsPluginContext = createContext<Readonly<FireCmsPlugin[]>>([])
+const { Provider: FireCmsPluginPluginsProvider, useValue: useFireCmsPlugin } =
+  createReadonly<FireCmsPlugin[]>([])
 
 interface FireCmsPluginProviderProps {
   plugins: FireCmsPlugin[]
@@ -13,10 +14,9 @@ export const FireCmsPluginProvider = ({
   children,
   plugins,
 }: FireCmsPluginProviderProps): JSX.Element => (
-  <FireCmsPluginContext.Provider value={plugins}>
+  <FireCmsPluginPluginsProvider value={plugins}>
     {children}
-  </FireCmsPluginContext.Provider>
+  </FireCmsPluginPluginsProvider>
 )
 
-export const useFireCmsPlugin = (): Readonly<FireCmsPlugin[]> =>
-  useContext(FireCmsPluginContext)
+export { useFireCmsPlugin }

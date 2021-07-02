@@ -1,7 +1,10 @@
+import { createReadonly } from '@fire-cms/react-utils'
 import type { ReactNode } from 'react'
-import { createContext, useContext } from 'react'
 
-const FireCmsLayoutRedirectToContext = createContext<string>('/')
+const {
+  Provider: FireCmsLayoutRedirectToProvider,
+  useValue: useFireCmsLayoutRedirectTo,
+} = createReadonly<string>('/')
 
 interface FireCmsLayoutProviderProps {
   children: ReactNode
@@ -12,10 +15,9 @@ export const FireCmsLayoutProvider = ({
   children,
   redirectTo,
 }: FireCmsLayoutProviderProps): JSX.Element => (
-  <FireCmsLayoutRedirectToContext.Provider value={redirectTo}>
+  <FireCmsLayoutRedirectToProvider value={redirectTo}>
     {children}
-  </FireCmsLayoutRedirectToContext.Provider>
+  </FireCmsLayoutRedirectToProvider>
 )
 
-export const useFireCmsLayoutRedirectTo = (): string =>
-  useContext(FireCmsLayoutRedirectToContext)
+export { useFireCmsLayoutRedirectTo }
