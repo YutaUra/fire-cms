@@ -5,17 +5,24 @@ import { SigninPage } from './pages/Signin'
 
 interface FireCmsLayoutPluginOption {
   redirectTo: string
+  basePath: string
 }
 
 export class FireCmsLayoutPlugin implements FireCmsPlugin {
   private readonly redirectTo: string
 
-  public constructor({ redirectTo }: FireCmsLayoutPluginOption) {
+  private readonly basePath: string
+
+  public constructor({ redirectTo, basePath }: FireCmsLayoutPluginOption) {
     this.redirectTo = redirectTo
+    this.basePath = basePath
   }
 
   public root = ({ children }: { children: ReactNode }): JSX.Element => (
-    <FireCmsLayoutProvider redirectTo={this.redirectTo}>
+    <FireCmsLayoutProvider
+      basePath={this.basePath}
+      redirectTo={this.redirectTo}
+    >
       {children}
     </FireCmsLayoutProvider>
   )
