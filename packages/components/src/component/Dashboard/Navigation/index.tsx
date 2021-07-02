@@ -10,17 +10,27 @@ import { DashboardNavigationProfile } from './Profile'
 const NavigationMobileCloseButton = (): JSX.Element => {
   const { onClose } = useDashboardSetIsOpen()
   return (
-    <div className="absolute top-0 right-0 pt-2 -mr-12">
-      <button
-        className="flex justify-center items-center ml-1 w-10 h-10 rounded-full focus:ring-2 focus:ring-inset focus:ring-white focus:outline-none"
-        onClick={onClose}
-        type="button"
-      >
-        <span className="sr-only">Close sidebar</span>
+    <Transition.Child
+      as={Fragment}
+      enter="ease-in-out duration-300"
+      enterFrom="opacity-0"
+      enterTo="opacity-100"
+      leave="ease-in-out duration-300"
+      leaveFrom="opacity-100"
+      leaveTo="opacity-0"
+    >
+      <div className="absolute top-0 right-0 pt-2 -mr-12">
+        <button
+          className="flex justify-center items-center ml-1 w-10 h-10 rounded-full focus:ring-2 focus:ring-inset focus:ring-white focus:outline-none"
+          onClick={onClose}
+          type="button"
+        >
+          <span className="sr-only">Close sidebar</span>
 
-        <HiX aria-hidden="true" className="w-6 h-6 text-white" />
-      </button>
-    </div>
+          <HiX aria-hidden="true" className="w-6 h-6 text-white" />
+        </button>
+      </div>
+    </Transition.Child>
   )
 }
 
@@ -58,17 +68,7 @@ export const DashboardNavigationMobile = (): JSX.Element => {
           leaveTo="-translate-x-full"
         >
           <div className="flex relative flex-col flex-1 w-full max-w-xs bg-gray-800">
-            <Transition.Child
-              as={Fragment}
-              enter="ease-in-out duration-300"
-              enterFrom="opacity-0"
-              enterTo="opacity-100"
-              leave="ease-in-out duration-300"
-              leaveFrom="opacity-100"
-              leaveTo="opacity-0"
-            >
-              <NavigationMobileCloseButton />
-            </Transition.Child>
+            <NavigationMobileCloseButton />
 
             <div className="overflow-y-auto flex-1 pt-5 pb-4 h-0">
               <DashboardNavigationLogo

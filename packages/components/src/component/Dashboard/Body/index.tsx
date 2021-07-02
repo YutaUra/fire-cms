@@ -32,5 +32,9 @@ export const DashboardBody = ({
   className,
   children,
 }: DashboardBodyProps): JSX.Element => (
-  <div className={clsx([className, 'flex flex-col'])}>{children}</div>
+  <div
+    className={clsx([className, 'w-0 flex-1 overflow-hidden flex flex-col'])}
+  >
+    {children}
+  </div>
 )
