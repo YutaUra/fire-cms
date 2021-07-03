@@ -16,7 +16,6 @@ to: packages/<%= packageName %>/package.json
   "files": [
     "dist"
   ],
-  "private": true,
   "publishConfig": {
     "access": "public"
   },
