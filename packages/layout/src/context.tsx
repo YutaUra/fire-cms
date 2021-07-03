@@ -5,19 +5,27 @@ const {
   Provider: FireCmsLayoutRedirectToProvider,
   useValue: useFireCmsLayoutRedirectTo,
 } = createReadonly<string>('/')
+const {
+  Provider: FireCmsLayoutNotFoundComponent,
+  useValue: useFireCmsLayoutNotFoundComponent,
+} = createReadonly<() => JSX.Element | null>(() => null)
 
 interface FireCmsLayoutProviderProps {
   children: ReactNode
   redirectTo: string
+  NotFound: () => JSX.Element | null
 }
 
 export const FireCmsLayoutProvider = ({
   children,
   redirectTo,
+  NotFound,
 }: FireCmsLayoutProviderProps): JSX.Element => (
   <FireCmsLayoutRedirectToProvider value={redirectTo}>
-    {children}
+    <FireCmsLayoutNotFoundComponent value={NotFound}>
+      {children}
+    </FireCmsLayoutNotFoundComponent>
   </FireCmsLayoutRedirectToProvider>
 )
 
-export { useFireCmsLayoutRedirectTo }
+export { useFireCmsLayoutRedirectTo, useFireCmsLayoutNotFoundComponent }

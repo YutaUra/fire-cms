@@ -33,6 +33,7 @@
     "@fire-cms/router": "^0.0.0",
     "@fire-cms/toast": "^0.0.0",
     "@fire-cms/react-utils": "^0.0.0",
+    "@fire-cms/components": "^0.0.0",
     "react-hook-form": "^7.9.0"
   },
   "peerDependencies": {
