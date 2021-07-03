@@ -1,5 +1,6 @@
+import { createReadonly } from '@fire-cms/react-utils'
 import type { AnchorHTMLAttributes, DetailedHTMLProps, ReactNode } from 'react'
-import { createContext, useCallback, useContext } from 'react'
+import { useCallback } from 'react'
 import join from 'url-join'
 
 export type LinkProps = DetailedHTMLProps<
@@ -8,17 +9,24 @@ export type LinkProps = DetailedHTMLProps<
 > & { href: string }
 export type LinkComponentType = (proos: LinkProps) => JSX.Element | null
 
-const FireCmsRouterPushContext = createContext<(url: string) => unknown>(
-  () => null,
-)
-const FireCmsRouterReplaceContext = createContext<(url: string) => unknown>(
-  () => null,
-)
-const FireCmsRouterQueryContext = createContext<Record<string, string>>({})
-const FireCmsRouterBasePathContext = createContext<string>('/')
-const FireCmsRouterLinkComponentContext = createContext<LinkComponentType>(
-  () => null,
-)
+const { Provider: FireCmsRouterPushProvider, useValue: useFireCmsRouterPush } =
+  createReadonly<(url: string) => unknown>(() => null)
+const {
+  Provider: FireCmsRouterReplaceProvider,
+  useValue: useFireCmsRouterReplace,
+} = createReadonly<(url: string) => unknown>(() => null)
+const {
+  Provider: FireCmsRouterQueryProvider,
+  useValue: useFireCmsRouterQuery,
+} = createReadonly<Record<string, string>>({})
+const {
+  Provider: FireCmsRouterBasePathProvider,
+  useValue: useFireCmsRouterBasePath,
+} = createReadonly<string>('/')
+const {
+  Provider: FireCmsRouterLinkComponentProvider,
+  useValue: useFireCmsRouterLinkComponent,
+} = createReadonly<LinkComponentType>(() => null)
 
 interface FireCmsRouterProviderProps {
   push: (url: string) => void
@@ -59,28 +67,24 @@ export const FireCmsRouterProvider = ({
   )
 
   return (
-    <FireCmsRouterPushContext.Provider value={push}>
-      <FireCmsRouterReplaceContext.Provider value={replace}>
-        <FireCmsRouterQueryContext.Provider value={query}>
-          <FireCmsRouterBasePathContext.Provider value={basePath}>
-            <FireCmsRouterLinkComponentContext.Provider value={Link}>
+    <FireCmsRouterPushProvider value={push}>
+      <FireCmsRouterReplaceProvider value={replace}>
+        <FireCmsRouterQueryProvider value={query}>
+          <FireCmsRouterBasePathProvider value={basePath}>
+            <FireCmsRouterLinkComponentProvider value={Link}>
               {children}
-            </FireCmsRouterLinkComponentContext.Provider>
-          </FireCmsRouterBasePathContext.Provider>
-        </FireCmsRouterQueryContext.Provider>
-      </FireCmsRouterReplaceContext.Provider>
-    </FireCmsRouterPushContext.Provider>
+            </FireCmsRouterLinkComponentProvider>
+          </FireCmsRouterBasePathProvider>
+        </FireCmsRouterQueryProvider>
+      </FireCmsRouterReplaceProvider>
+    </FireCmsRouterPushProvider>
   )
 }
 
-export const useFireCmsRouterPush = (): ((url: string) => unknown) =>
-  useContext(FireCmsRouterPushContext)
-export const useFireCmsRouterReplace = (): ((url: string) => unknown) =>
-  useContext(FireCmsRouterReplaceContext)
-export const useFireCmsRouterQuery = (): Record<string, string> =>
-  useContext(FireCmsRouterQueryContext)
-export const useFireCmsRouterBasePath = (): string =>
-  useContext(FireCmsRouterBasePathContext)
-
-export const useFireCmsRouterLinkComponent = (): LinkComponentType =>
-  useContext(FireCmsRouterLinkComponentContext)
+export {
+  useFireCmsRouterPush,
+  useFireCmsRouterReplace,
+  useFireCmsRouterQuery,
+  useFireCmsRouterBasePath,
+  useFireCmsRouterLinkComponent,
+}
