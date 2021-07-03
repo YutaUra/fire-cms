@@ -1,5 +1,6 @@
 import typescript from '@rollup/plugin-typescript'
 import path from 'path'
+import builtins from 'rollup-plugin-node-builtins'
 
 const input = 'src/index.ts'
 
@@ -34,7 +35,10 @@ export default (option) => {
       input,
       external,
       output: { format: 'cjs', sourcemap: true, dir: path.dirname(pkg.main) },
-      plugins: [typescript({ declaration: false, jsx: 'react-jsx' })],
+      plugins: [
+        builtins(),
+        typescript({ declaration: false, jsx: 'react-jsx' }),
+      ],
     },
 
     // ES module (for bundlers) build.
@@ -42,7 +46,10 @@ export default (option) => {
       input,
       external,
       output: { format: 'es', sourcemap: true, dir: path.dirname(pkg.module) },
-      plugins: [typescript({ declaration: false, jsx: 'react-jsx' })],
+      plugins: [
+        builtins(),
+        typescript({ declaration: false, jsx: 'react-jsx' }),
+      ],
     },
   ]
 }

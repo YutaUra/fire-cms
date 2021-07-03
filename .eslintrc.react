@@ -33,6 +33,7 @@
         ]
       }
     ],
+    "react/no-unstable-nested-components": ["off"],
     "react/jsx-indent": "off",
     "react/function-component-definition": [
       "error",

@@ -28,10 +28,7 @@ export const BlogForm = ({
   })
 
   return (
-    <form
-      className="space-y-8"
-      onSubmit={handleSubmit(onSubmit, console.debug)}
-    >
+    <form className="space-y-8" onSubmit={handleSubmit(onSubmit)}>
       <div className="space-y-8">
         <FormInput
           control={control}

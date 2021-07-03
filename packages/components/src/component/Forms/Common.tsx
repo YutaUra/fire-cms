@@ -12,6 +12,7 @@ interface CommonFieldProps {
   htmlFor: string
   label: ReactNode
   noShadow?: true
+  fieldWrapperClassName?: string
 }
 
 export const CommonField = ({
@@ -22,13 +23,22 @@ export const CommonField = ({
   label,
   htmlFor,
   noShadow,
+  fieldWrapperClassName,
 }: CommonFieldProps): JSX.Element => (
   <div className={className}>
     <Label className={labelClass} htmlFor={htmlFor}>
       {label}
     </Label>
 
-    <div className={clsx([!noShadow && 'shadow-sm', 'mt-1'])}>{children}</div>
+    <div
+      className={clsx([
+        !noShadow && 'shadow-sm',
+        fieldWrapperClassName,
+        'mt-1',
+      ])}
+    >
+      {children}
+    </div>
 
     <Error error={error} />
   </div>

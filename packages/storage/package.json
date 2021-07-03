@@ -1,0 +1,57 @@
+{
+  "name": "@fire-cms/storage",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "YutaUra <yuuta3594@outlook.jp>",
+  "homepage": "https://github.com/YutaUra/fire-cms#readme",
+  "license": "MIT",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "browser": "dist/umd/index.js",
+  "types": "dist/types/index.d.ts",
+  "directories": {},
+  "files": [
+    "dist"
+  ],
+  "private": true,
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YutaUra/fire-cms.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/YutaUra/fire-cms/issues"
+  },
+  "dependencies": {
+    "@fire-cms/components": "^0.0.0",
+    "@fire-cms/firebase-config": "^0.0.0",
+    "@fire-cms/layout": "^0.0.0",
+    "@fire-cms/permission": "^0.0.0",
+    "@fire-cms/plugin": "^0.0.0",
+    "@fire-cms/react-utils": "^0.0.0",
+    "@fire-cms/router": "^0.0.0",
+    "@fire-cms/toast": "^0.0.0",
+    "@headlessui/react": "^1.3.0",
+    "@hookform/resolvers": "^2.6.0",
+    "clsx": "^1.1.1",
+    "date-fns": "^2.22.1",
+    "filesize": "^6.4.0",
+    "react-hook-form": "^7.10.0",
+    "react-icons": "^4.2.0",
+    "zod": "^3.2.0"
+  },
+  "peerDependencies": {
+    "firebase": "^9.0.0-beta.5",
+    "react": "^17.0.2"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.11",
+    "firebase": "^9.0.0-beta.5",
+    "react": "^17.0.2"
+  }
+}

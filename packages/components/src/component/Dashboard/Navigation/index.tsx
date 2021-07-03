@@ -8,7 +8,7 @@ import { DashboardNavigationLogo } from './Logo'
 import { DashboardNavigationProfile } from './Profile'
 
 const NavigationMobileCloseButton = (): JSX.Element => {
-  const { onClose } = useDashboardSetIsOpen()
+  const { onFalse } = useDashboardSetIsOpen()
   return (
     <Transition.Child
       as={Fragment}
@@ -22,7 +22,7 @@ const NavigationMobileCloseButton = (): JSX.Element => {
       <div className="absolute top-0 right-0 pt-2 -mr-12">
         <button
           className="flex justify-center items-center ml-1 w-10 h-10 rounded-full focus:ring-2 focus:ring-inset focus:ring-white focus:outline-none"
-          onClick={onClose}
+          onClick={onFalse}
           type="button"
         >
           <span className="sr-only">Close sidebar</span>
@@ -36,13 +36,13 @@ const NavigationMobileCloseButton = (): JSX.Element => {
 
 export const DashboardNavigationMobile = (): JSX.Element => {
   const isOpen = useDashboardIsOpenValue()
-  const { onClose } = useDashboardSetIsOpen()
+  const { onFalse } = useDashboardSetIsOpen()
   return (
     <Transition.Root as={Fragment} show={isOpen}>
       <Dialog
         as="div"
         className="flex md:hidden fixed inset-0 z-40"
-        onClose={onClose}
+        onClose={onFalse}
         open={isOpen}
         static
       >
