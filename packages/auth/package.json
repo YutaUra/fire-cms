@@ -32,12 +32,12 @@
     "@fire-cms/react-utils": "^0.0.2"
   },
   "peerDependencies": {
-    "firebase": "^9.0.0-beta.5",
+    "firebase": "9.0.0-beta.6",
     "react": "^17.0.2"
   },
   "devDependencies": {
     "@types/react": "^17.0.11",
-    "firebase": "^9.0.0-beta.5",
+    "firebase": "9.0.0-beta.6",
     "react": "^17.0.2"
   }
 }
