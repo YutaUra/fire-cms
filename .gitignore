@@ -7,3 +7,6 @@ coverage
 # log
 yarn-error.log
 lerna-debug.log
+
+# secret
+.npmrc
