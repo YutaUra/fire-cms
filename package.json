@@ -17,7 +17,7 @@
     "pre-commit": "run-s lint-staged validate",
     "lint-staged": "lint-staged",
     "validate": "run-p validate:*",
-    "validate:format": "lerna exec \"prettier -c src\" --parallel --scope @fire-cms/*",
+    "validate:format": "prettier -c packages/*/src",
     "validate:type": "lerna exec \"tsc --noEmit\" --parallel --scope @fire-cms/*",
     "validate:lint": "lerna exec \"eslint src --ext ts,tsx\" --parallel --scope @fire-cms/*",
     "validate-pass:test": "jest",
