@@ -1,6 +1,6 @@
 {
   "name": "@fire-cms/with-nextjs",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "> TODO: description",
   "author": "YutaUra <yuuta3594@outlook.jp>",
   "homepage": "https://github.com/YutaUra/fire-cms#readme",
@@ -27,7 +27,7 @@
     "url": "https://github.com/YutaUra/fire-cms/issues"
   },
   "dependencies": {
-    "@fire-cms/router": "^0.0.0"
+    "@fire-cms/router": "^0.0.1"
   },
   "peerDependencies": {
     "next": "^11.0.1",

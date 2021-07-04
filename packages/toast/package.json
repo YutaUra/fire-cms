@@ -1,6 +1,6 @@
 {
   "name": "@fire-cms/toast",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "> TODO: description",
   "author": "YutaUra <yuuta3594@outlook.jp>",
   "homepage": "https://github.com/YutaUra/fire-cms#readme",
@@ -27,7 +27,7 @@
     "url": "https://github.com/YutaUra/fire-cms/issues"
   },
   "dependencies": {
-    "@fire-cms/plugin": "^0.0.0",
+    "@fire-cms/plugin": "^0.0.1",
     "react-toastify": "^7.0.4"
   },
   "peerDependencies": {
