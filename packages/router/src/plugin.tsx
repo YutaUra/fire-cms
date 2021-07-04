@@ -1,5 +1,4 @@
 import type { FireCmsPlugin } from '@fire-cms/plugin'
-import type { ReactNode } from 'react'
 import type { LinkComponentType } from './context'
 import { FireCmsRouterProvider } from './context'
 
@@ -30,7 +29,7 @@ export class FireCmsRouterPlugin implements FireCmsPlugin {
     this.LinkComponent = LinkComponent
   }
 
-  public root = ({ children }: { children: ReactNode }): JSX.Element => {
+  public cmsRoot: FireCmsPlugin['cmsRoot'] = ({ children }) => {
     const { push, replace, query } = this.useRouter()
 
     return (

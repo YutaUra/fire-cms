@@ -20,7 +20,7 @@
     "validate:format": "lerna exec \"prettier -c src\" --parallel --scope @fire-cms/*",
     "validate:type": "lerna exec \"tsc --noEmit\" --parallel --scope @fire-cms/*",
     "validate:lint": "lerna exec \"eslint src --ext ts,tsx\" --parallel --scope @fire-cms/*",
-    "validate:test": "jest",
+    "validate-pass:test": "jest",
     "build": "lerna exec \"rollup -c && tsc -p tsconfig.build.json\" --scope @fire-cms/*",
     "dev": "run-p dev:*",
     "dev:build": "lerna exec \"concurrently --kill-others 'rollup -cw' 'tsc -p tsconfig.build.json --watch'\" --parallel --scope @fire-cms/*",

@@ -1,5 +1,4 @@
 import type { FireCmsPlugin } from '@fire-cms/plugin'
-import type { ReactNode } from 'react'
 import { FireCmsLayoutProvider } from './context'
 import { NotFound } from './pages/404'
 import { Index } from './pages/index'
@@ -16,7 +15,7 @@ export class FireCmsLayoutPlugin implements FireCmsPlugin {
     this.redirectTo = redirectTo
   }
 
-  public root = ({ children }: { children: ReactNode }): JSX.Element => (
+  public cmsRoot: FireCmsPlugin['cmsRoot'] = ({ children }) => (
     <FireCmsLayoutProvider NotFound={NotFound} redirectTo={this.redirectTo}>
       {children}
     </FireCmsLayoutProvider>

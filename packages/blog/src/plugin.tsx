@@ -36,7 +36,7 @@ export class FireCmsBlogPlugin implements FireCmsPlugin {
     return undefined
   }
 
-  public root: FireCmsPlugin['root'] = ({ children }) => (
+  public cmsRoot: FireCmsPlugin['cmsRoot'] = ({ children }) => (
     <FireCmsBlogProvider>{children}</FireCmsBlogProvider>
   )
 }

@@ -1,4 +1,4 @@
-import type { ReactNode, SVGProps } from 'react'
+import type { FC, SVGProps, VFC } from 'react'
 
 export interface FireCmsMenu {
   name: string
@@ -6,12 +6,14 @@ export interface FireCmsMenu {
   icon: (props: SVGProps<SVGSVGElement>) => JSX.Element
 }
 
+export interface FireCmsPage {
+  Page: VFC
+}
+
 export interface FireCmsPlugin {
-  root?: (props: { children: ReactNode }) => JSX.Element
-  getPage?: (slug: string[]) =>
-    | {
-        Page: () => JSX.Element
-      }
-    | undefined
+  commonRoot?: FC
+  cmsRoot?: FC
+  clientRoot?: FC
+  getPage?: (slug: string[]) => FireCmsPage | undefined
   menus?: FireCmsMenu[]
 }

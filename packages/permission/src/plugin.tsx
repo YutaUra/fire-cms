@@ -1,5 +1,4 @@
 import type { FireCmsPlugin } from '@fire-cms/plugin'
-import type { ReactNode } from 'react'
 import { FireCmsPermissionProvider } from './context'
 import { FetchFireCmsIsStaffEffect } from './effect'
 import { Forbidden } from './pages/403'
@@ -24,7 +23,7 @@ export class FireCmsPermissionPlugin implements FireCmsPlugin {
     return undefined
   }
 
-  public root = ({ children }: { children: ReactNode }): JSX.Element => (
+  public cmsRoot: FireCmsPlugin['cmsRoot'] = ({ children }) => (
     <FireCmsPermissionProvider forbiddenUrl={this.forbiddenUrl}>
       <FetchFireCmsIsStaffEffect />
 
