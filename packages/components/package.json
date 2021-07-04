@@ -1,6 +1,6 @@
 {
   "name": "@fire-cms/components",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "> TODO: description",
   "author": "YutaUra <yuuta3594@outlook.jp>",
   "homepage": "https://github.com/YutaUra/fire-cms#readme",
@@ -30,9 +30,9 @@
     "react": "^17.0.2"
   },
   "devDependencies": {
-    "@fire-cms/plugin": "^0.0.1",
-    "@fire-cms/react-utils": "^0.0.1",
-    "@fire-cms/router": "^0.0.1",
+    "@fire-cms/plugin": "^0.0.2",
+    "@fire-cms/react-utils": "^0.0.2",
+    "@fire-cms/router": "^0.0.2",
     "@types/react": "^17.0.11",
     "react": "^17.0.2"
   },

@@ -1,6 +1,6 @@
 {
   "name": "@fire-cms/firebase-firestore",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "> TODO: description",
   "author": "YutaUra <yuuta3594@outlook.jp>",
   "homepage": "https://github.com/YutaUra/fire-cms#readme",
@@ -27,8 +27,8 @@
     "url": "https://github.com/YutaUra/fire-cms/issues"
   },
   "dependencies": {
-    "@fire-cms/firebase-config": "^0.0.1",
-    "@fire-cms/plugin": "^0.0.1"
+    "@fire-cms/firebase-config": "^0.0.2",
+    "@fire-cms/plugin": "^0.0.2"
   },
   "peerDependencies": {
     "firebase": "^9.0.0-beta.5",

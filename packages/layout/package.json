@@ -1,6 +1,6 @@
 {
   "name": "@fire-cms/layout",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "> TODO: description",
   "author": "YutaUra <yuuta3594@outlook.jp>",
   "homepage": "https://github.com/YutaUra/fire-cms#readme",
@@ -27,12 +27,12 @@
     "url": "https://github.com/YutaUra/fire-cms/issues"
   },
   "dependencies": {
-    "@fire-cms/auth": "^0.0.1",
-    "@fire-cms/components": "^0.0.1",
-    "@fire-cms/plugin": "^0.0.1",
-    "@fire-cms/react-utils": "^0.0.1",
-    "@fire-cms/router": "^0.0.1",
-    "@fire-cms/toast": "^0.0.1",
+    "@fire-cms/auth": "^0.0.2",
+    "@fire-cms/components": "^0.0.2",
+    "@fire-cms/plugin": "^0.0.2",
+    "@fire-cms/react-utils": "^0.0.2",
+    "@fire-cms/router": "^0.0.2",
+    "@fire-cms/toast": "^0.0.2",
     "react-hook-form": "^7.9.0"
   },
   "peerDependencies": {
