@@ -97,7 +97,7 @@ jobs:
           CI: true
 
       - name: Test
-        run: yarn validate:test
+        run: yarn validate-pass:test
         env:
           CI: true
           NODE_OPTIONS: '--max_old_space_size=4096'
