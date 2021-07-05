@@ -3,7 +3,7 @@ to: packages/<%= packageName %>/package.json
 ---
 {
   "name": "@fire-cms/<%= packageName %>",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "> TODO: description",
   "author": "YutaUra <yuuta3594@outlook.jp>",
   "homepage": "https://github.com/YutaUra/fire-cms#readme",
