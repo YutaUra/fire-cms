@@ -35,7 +35,7 @@
     "react": "^17.0.2"
   },
   "devDependencies": {
-    "@types/react": "^17.0.11",
+    "@types/react": "17.0.13",
     "firebase": "9.0.0-beta.6",
     "react": "^17.0.2"
   }

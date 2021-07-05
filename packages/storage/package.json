@@ -42,14 +42,14 @@
     "filesize": "^6.4.0",
     "react-hook-form": "7.10.0",
     "react-icons": "^4.2.0",
-    "zod": "^3.2.0"
+    "zod": "3.3.4"
   },
   "peerDependencies": {
     "firebase": "9.0.0-beta.6",
     "react": "^17.0.2"
   },
   "devDependencies": {
-    "@types/react": "^17.0.11",
+    "@types/react": "17.0.13",
     "firebase": "9.0.0-beta.6",
     "react": "^17.0.2"
   }
