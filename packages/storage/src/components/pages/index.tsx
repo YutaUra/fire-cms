@@ -3,7 +3,7 @@ import {
   DashboardBodyMain,
   DashboardBodyTitle,
 } from '@fire-cms/components'
-import { useStorageFiles } from '../../hooks'
+import { useStorageFiles } from '@fire-cms/firebase-storage'
 import { PathBreadcrumbs } from '../molecules/PathBreadcrumbs'
 import { CreateFile } from '../organizations/CreateFile'
 import { CreateFolder } from '../organizations/CreateFolder'

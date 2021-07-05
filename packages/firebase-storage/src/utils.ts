@@ -3,8 +3,8 @@ import type { StorageReference } from 'firebase/storage'
 import { listAll, ref } from 'firebase/storage'
 import { join } from 'path'
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { FIRECMS_STORAGE } from '../const'
-import { useFireCmsStorage, useFireCmsStorageUpload } from './base'
+import { FIRECMS_STORAGE } from './const'
+import { useFireCmsStorage, useFireCmsStorageUpload } from './hooks'
 
 export const useCreateStorageRef = (): ((path: string) => StorageReference) => {
   const storage = useFireCmsStorage()

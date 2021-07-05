@@ -33,7 +33,7 @@
     "@fire-cms/plugin": "^0.0.2",
     "@fire-cms/react-utils": "^0.0.2",
     "@fire-cms/router": "^0.0.2",
-    "@fire-cms/user": "^0.0.2",
+    "@fire-cms/user-profile": "^0.0.2",
     "@types/react": "17.0.13",
     "react": "^17.0.2"
   },

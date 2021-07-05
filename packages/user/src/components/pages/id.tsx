@@ -6,11 +6,11 @@ import {
   DashboardBodyTitle,
 } from '@fire-cms/components'
 import { useFireCmsRouterPush } from '@fire-cms/router'
+import { useFireCmsUserProfilePublicProfile } from '@fire-cms/user-profile'
 import type { VFC } from 'react'
-import { useFireCmsUserPublicProfile } from '../../hooks'
 
 export const UserIdMain: VFC<{ userId: string }> = ({ userId }) => {
-  const [profile, isLoading] = useFireCmsUserPublicProfile(userId)
+  const [profile, isLoading] = useFireCmsUserProfilePublicProfile(userId)
   const push = useFireCmsRouterPush()
 
   if (isLoading) return null

@@ -4,27 +4,27 @@ import {
   useCreateFileDownloadUrl,
   useCreateStorageRef,
   useFireCmsStorageUpload,
-} from '@fire-cms/storage'
+} from '@fire-cms/firebase-storage'
 import { toast } from '@fire-cms/toast'
+import {
+  useFireCmsUserProfile,
+  useFireCmsUserProfileMyPublicProfile,
+  useFireCmsUserProfileSetMyPublicProfile,
+} from '@fire-cms/user-profile'
 import type { VFC } from 'react'
 import { useCallback } from 'react'
-import {
-  useFireCmsUserMyPublicProfile,
-  useFireCmsUserSetMyPublicProfile,
-} from '../../context'
-import { useFireCmsUser } from '../../hooks'
 import type { UserProfileFormField } from '../forms/UserProfileForm'
 import { UserProfileForm } from '../forms/UserProfileForm'
 
 export const UserSettingsMain: VFC = () => {
-  const profile = useFireCmsUserMyPublicProfile()
-  const setProfile = useFireCmsUserSetMyPublicProfile()
+  const profile = useFireCmsUserProfileMyPublicProfile()
+  const setProfile = useFireCmsUserProfileSetMyPublicProfile()
   const user = useFireCmsAuthUser()
   const createStorageRef = useCreateStorageRef()
   const createFileDownloadUrl = useCreateFileDownloadUrl()
   const { uploadBytes } = useFireCmsStorageUpload()
 
-  const { setMyPublicUserProfile } = useFireCmsUser()
+  const { setMyPublicUserProfile } = useFireCmsUserProfile()
 
   const getPhotoUrl = useCallback(
     async (photo: File | string | null) => {

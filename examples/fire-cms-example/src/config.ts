@@ -8,6 +8,7 @@ import { FireCmsRouterPlugin } from '@fire-cms/router'
 import { FireCmsStoragePlugin } from '@fire-cms/storage'
 import { FireCmsToastPlugin } from '@fire-cms/toast'
 import { FireCmsUserPlugin } from '@fire-cms/user'
+import { FireCmsUserProfilePlugin } from '@fire-cms/user-profile'
 import { LinkComponent, useNextRouter } from '@fire-cms/with-nextjs'
 
 export const plugins: FireCmsPlugin[] = [
@@ -34,4 +35,5 @@ export const plugins: FireCmsPlugin[] = [
   new FireCmsStoragePlugin(),
   new FireCmsBlogPlugin(),
   new FireCmsUserPlugin(),
+  new FireCmsUserProfilePlugin(),
 ]

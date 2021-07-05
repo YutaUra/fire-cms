@@ -1,8 +1,8 @@
 import { TableTd, TableTr } from '@fire-cms/components'
+import { FIRECMS_STORAGE } from '@fire-cms/firebase-storage'
 import { useFireCmsRouterLinkComponent } from '@fire-cms/router'
 import type { StorageReference } from 'firebase/storage'
 import { AiOutlineFolder } from 'react-icons/ai'
-import { FIRECMS_STORAGE } from '../../const'
 
 interface FolderRowProps {
   prefix: StorageReference

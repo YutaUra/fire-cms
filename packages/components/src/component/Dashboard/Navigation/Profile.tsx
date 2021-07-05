@@ -1,5 +1,5 @@
 import { useFireCmsRouterLinkComponent } from '@fire-cms/router'
-import { useFireCmsUserMyPublicProfile } from '@fire-cms/user'
+import { useFireCmsUserProfileMyPublicProfile } from '@fire-cms/user-profile'
 import clsx from 'clsx'
 import noImage from '../../../assets/user-no-image.png'
 
@@ -10,7 +10,7 @@ interface DashboardNavigationProfileAvatarProps {
 const DashboardNavigationProfileAvatar = ({
   className,
 }: DashboardNavigationProfileAvatarProps): JSX.Element => {
-  const profile = useFireCmsUserMyPublicProfile()
+  const profile = useFireCmsUserProfileMyPublicProfile()
   return (
     <div>
       <img
@@ -29,7 +29,7 @@ interface DashboardNavigationProfileNameProps {
 const DashboardNavigationProfileName = ({
   size,
 }: DashboardNavigationProfileNameProps): JSX.Element => {
-  const profile = useFireCmsUserMyPublicProfile()
+  const profile = useFireCmsUserProfileMyPublicProfile()
   return (
     <div className="ml-3">
       <p

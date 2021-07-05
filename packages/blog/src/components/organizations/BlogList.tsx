@@ -7,7 +7,7 @@ import {
   TableTr,
 } from '@fire-cms/components'
 import { useFireCmsRouterLinkComponent } from '@fire-cms/router'
-import { useFireCmsUserPublicProfile } from '@fire-cms/user'
+import { useFireCmsUserProfilePublicProfile } from '@fire-cms/user-profile'
 import clsx from 'clsx'
 import { format } from 'date-fns'
 import sortby from 'lodash.sortby'
@@ -18,8 +18,8 @@ import type { FireCmsBlogBlogModel } from '../../schema'
 
 const BlogItem: VFC<{ blog: FireCmsBlogBlogModel }> = ({ blog }) => {
   const Link = useFireCmsRouterLinkComponent()
-  const [createdBy] = useFireCmsUserPublicProfile(blog.createdBy)
-  const [updatedBy] = useFireCmsUserPublicProfile(blog.updatedBy)
+  const [createdBy] = useFireCmsUserProfilePublicProfile(blog.createdBy)
+  const [updatedBy] = useFireCmsUserProfilePublicProfile(blog.updatedBy)
 
   return (
     <TableTr key={blog.id}>

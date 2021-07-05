@@ -1,6 +1,4 @@
 import type { FireCmsPlugin } from '@fire-cms/plugin'
-import { FireCmsUserCmsProvider, FireCmsUserCommonProvider } from './context'
-import { FireCmsUserFetchMyPublicProfile } from './effect'
 import { UserId } from './pages/id'
 import { UserSettings } from './pages/settings'
 
@@ -21,16 +19,4 @@ export class FireCmsUserPlugin implements FireCmsPlugin {
     }
     return undefined
   }
-
-  public commonRoot: FireCmsPlugin['commonRoot'] = ({ children }) => (
-    <FireCmsUserCommonProvider>{children}</FireCmsUserCommonProvider>
-  )
-
-  public cmsRoot: FireCmsPlugin['cmsRoot'] = ({ children }) => (
-    <FireCmsUserCmsProvider>
-      <FireCmsUserFetchMyPublicProfile />
-
-      {children}
-    </FireCmsUserCmsProvider>
-  )
 }

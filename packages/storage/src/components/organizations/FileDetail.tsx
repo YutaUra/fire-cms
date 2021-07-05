@@ -1,6 +1,7 @@
+import { useFileDownloadUrl } from '@fire-cms/firebase-storage'
 import { useFireCmsRouterLinkComponent } from '@fire-cms/router'
 import { toast } from '@fire-cms/toast'
-import { useFireCmsUserPublicProfile } from '@fire-cms/user'
+import { useFireCmsUserProfilePublicProfile } from '@fire-cms/user-profile'
 import { Dialog, Transition } from '@headlessui/react'
 import { format } from 'date-fns'
 import filesize from 'filesize'
@@ -10,7 +11,6 @@ import type { MouseEventHandler, ReactNode } from 'react'
 import { Fragment, useCallback, useMemo } from 'react'
 import { HiX } from 'react-icons/hi'
 import { MdOpenInNew } from 'react-icons/md'
-import { useFileDownloadUrl } from '../../hooks'
 
 interface FileDetailModalProps {
   open: boolean
@@ -72,7 +72,7 @@ const FileDetailInfomation = ({
   downloadUrl,
 }: FileDetailInfomationProps): JSX.Element => {
   const uploadedBy = useMemo(() => file.customMetadata?.uploadedBy, [file])
-  const [profile] = useFireCmsUserPublicProfile(uploadedBy ?? '')
+  const [profile] = useFireCmsUserProfilePublicProfile(uploadedBy ?? '')
   const Link = useFireCmsRouterLinkComponent()
 
   return (

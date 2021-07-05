@@ -1,5 +1,4 @@
 import { FormImage, FormInput } from '@fire-cms/components'
-import { DevTool } from '@hookform/devtools'
 import { zodResolver } from '@hookform/resolvers/zod'
 import type { VFC } from 'react'
 import type { SubmitHandler } from 'react-hook-form'
@@ -67,8 +66,6 @@ export const UserProfileForm: VFC<UserProfileFormProps> = ({
           </button>
         </div>
       </div>
-
-      <DevTool control={control} placement="bottom-right" />
     </form>
   )
 }

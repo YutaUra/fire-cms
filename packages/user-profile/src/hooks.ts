@@ -13,16 +13,18 @@ import {
   useRawFireCmsUserPublicProfile,
 } from './context'
 import type {
-  FireCmsUserBasePublicProfileModel,
-  FireCmsUserPublicProfileModel,
+  FireCmsUserProfileBasePublicProfileModel,
+  FireCmsUserProfilePublicProfileModel,
 } from './schema'
-import { FireCmsUserPublicProfileSchema } from './schema'
+import { FireCmsUserProfilePublicProfileSchema } from './schema'
 
-interface FireCmsClient {
-  fetchPublicProfile: (uid: string) => Promise<FireCmsUserPublicProfileModel>
+interface FireCmsUserProfileClient {
+  fetchPublicProfile: (
+    uid: string,
+  ) => Promise<FireCmsUserProfilePublicProfileModel>
 }
 
-export const useFireCmsClient = (): FireCmsClient => {
+export const useFireCmsUserProfileClient = (): FireCmsUserProfileClient => {
   const db = useFireCmsFirestore()
 
   const fetchPublicProfile = useCallback(
@@ -32,7 +34,7 @@ export const useFireCmsClient = (): FireCmsClient => {
       if (!snapshot.exists()) {
         throw Error('USER NOT FOUND')
       }
-      const parse = FireCmsUserPublicProfileSchema.safeParse({
+      const parse = FireCmsUserProfilePublicProfileSchema.safeParse({
         id: snapshot.id,
         ...snapshot.data(),
       })
@@ -47,23 +49,23 @@ export const useFireCmsClient = (): FireCmsClient => {
   }
 }
 
-type FireCmsUser = FireCmsClient & {
+type FireCmsUserProfile = FireCmsUserProfileClient & {
   setMyPublicUserProfile: (
     uid: string,
-    profile: FireCmsUserBasePublicProfileModel,
+    profile: FireCmsUserProfileBasePublicProfileModel,
     create?: boolean,
-  ) => Promise<FireCmsUserPublicProfileModel>
+  ) => Promise<FireCmsUserProfilePublicProfileModel>
 }
 
-export const useFireCmsUser = (): FireCmsUser => {
-  const client = useFireCmsClient()
+export const useFireCmsUserProfile = (): FireCmsUserProfile => {
+  const client = useFireCmsUserProfileClient()
   const { fetchPublicProfile } = client
   const db = useFireCmsFirestore()
 
   const setMyPublicUserProfile = useCallback(
     async (
       uid: string,
-      profile: FireCmsUserBasePublicProfileModel,
+      profile: FireCmsUserProfileBasePublicProfileModel,
       create = false,
     ) => {
       const ref = doc(db, PUBLIC_USER_COLLECTION, uid)
@@ -97,12 +99,12 @@ export const useFireCmsUser = (): FireCmsUser => {
   }
 }
 
-export const useFireCmsUserPublicProfile = (
+export const useFireCmsUserProfilePublicProfile = (
   uid: string,
-): [FireCmsUserPublicProfileModel | undefined, boolean] => {
+): [FireCmsUserProfilePublicProfileModel | undefined, boolean] => {
   const profile = useRawFireCmsUserPublicProfile(uid)
   const [isLoading, setIsLoading] = useState(true)
-  const { fetchPublicProfile } = useFireCmsClient()
+  const { fetchPublicProfile } = useFireCmsUserProfileClient()
   const { setPublicProfile } = useFireCmsUserSetPublicProfile()
 
   useEffect(() => {

@@ -1,9 +1,11 @@
+import {
+  useCreateStorageRef,
+  useFireCmsStorageUpload,
+} from '@fire-cms/firebase-storage'
 import { toast } from '@fire-cms/toast'
 import { Dialog } from '@headlessui/react'
-import { uploadBytes } from 'firebase/storage'
 import { useCallback } from 'react'
 import { AiFillFileAdd } from 'react-icons/ai'
-import { useCreateStorageRef } from '../../hooks'
 import type { CreateFileFormField } from '../forms/CreateFileForm'
 import { CreateFileForm } from '../forms/CreateFileForm'
 import { Modal } from '../molecules/Modal'
@@ -15,6 +17,7 @@ interface CreateFileProps {
 
 export const CreateFile = ({ path, reload }: CreateFileProps): JSX.Element => {
   const createRef = useCreateStorageRef()
+  const { uploadBytes } = useFireCmsStorageUpload()
 
   const handleSubmit = useCallback(
     (onClose: () => void) =>
@@ -32,7 +35,7 @@ export const CreateFile = ({ path, reload }: CreateFileProps): JSX.Element => {
           toast.error('ファイルをアップロードできませんでした。')
         }
       },
-    [createRef, path, reload],
+    [createRef, path, reload, uploadBytes],
   )
 
   return (

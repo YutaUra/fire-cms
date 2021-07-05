@@ -1,13 +1,13 @@
 import { useFireCmsAuthUser } from '@fire-cms/auth'
 import { useEffect } from 'react'
-import { useFireCmsUserSetMyPublicProfile } from './context'
-import { useFireCmsUser } from './hooks'
+import { useFireCmsUserProfileSetMyPublicProfile } from './context'
+import { useFireCmsUserProfile } from './hooks'
 
-export const FireCmsUserFetchMyPublicProfile = (): null => {
+export const FireCmsUserProfileFetchMyPublicProfile = (): null => {
   const user = useFireCmsAuthUser()
-  const setUserProfile = useFireCmsUserSetMyPublicProfile()
+  const setUserProfile = useFireCmsUserProfileSetMyPublicProfile()
 
-  const { fetchPublicProfile, setMyPublicUserProfile } = useFireCmsUser()
+  const { fetchPublicProfile, setMyPublicUserProfile } = useFireCmsUserProfile()
 
   useEffect(() => {
     if (!user) return
