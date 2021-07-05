@@ -82,10 +82,7 @@ export const DashboardNavigationMobile = (): JSX.Element => {
 
             <DashboardNavigationProfile
               className="flex-shrink-0"
-              href="#"
               size="mobile"
-              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-              username="Tom Cook"
             />
           </div>
         </Transition.Child>
@@ -120,13 +117,7 @@ export const DashboardNavigationDesktop = ({
           <DashboardNavigationLinkList className="flex-1 bg-gray-800" />
         </div>
 
-        <DashboardNavigationProfile
-          className="flex-shrink-0"
-          href="#"
-          size="desktop"
-          src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-          username="Tom Cook"
-        />
+        <DashboardNavigationProfile className="flex-shrink-0" size="desktop" />
       </div>
     </div>
   </div>

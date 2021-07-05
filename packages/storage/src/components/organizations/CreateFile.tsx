@@ -23,6 +23,7 @@ export const CreateFile = ({ path, reload }: CreateFileProps): JSX.Element => {
         if (!file) return
 
         try {
+          toast.info('アップロードを開始します')
           await uploadBytes(createRef(`${path}/${file.name}`), file)
           await reload()
           onClose()

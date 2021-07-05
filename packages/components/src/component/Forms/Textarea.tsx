@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import type { ComponentPropsWithoutRef, ReactNode } from 'react'
 import type { FieldValues, Path, UseControllerProps } from 'react-hook-form'
 import { useController } from 'react-hook-form'
-import { CommonField } from './Common'
+import { FormCommonField } from './Common'
 
 export type FormTextareaProps<T extends FieldValues> = UseControllerProps<
   T,
@@ -37,7 +37,7 @@ export const FormTextarea = <T extends FieldValues>({
   })
 
   return (
-    <CommonField
+    <FormCommonField
       className={className}
       error={error}
       htmlFor={name}
@@ -52,6 +52,6 @@ export const FormTextarea = <T extends FieldValues>({
           'block flex-1 w-full min-w-0 sm:text-sm rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500',
         ])}
       />
-    </CommonField>
+    </FormCommonField>
   )
 }

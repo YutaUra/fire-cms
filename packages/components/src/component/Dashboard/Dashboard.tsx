@@ -1,5 +1,6 @@
 import clsx from 'clsx'
 import type { ReactNode } from 'react'
+import { DashboardBody } from './Body'
 import { DashboardProvider } from './context'
 import {
   DashboardNavigationDesktop,
@@ -17,17 +18,15 @@ export interface DashboardProps {
  * ```tsx
  * const Sample = () => (
  *   <Dashboard>
- *     <DashboardBody>
- *       <DashboardBodyHeader />
+ *     <DashboardBodyHeader />
  *
- *       <DashboardBodyMain>
- *         <DashboardBodyTitle>Dashboard > Sample</DashboardBodyTitle>
+ *     <DashboardBodyMain>
+ *       <DashboardBodyTitle>Dashboard > Sample</DashboardBodyTitle>
  *
- *         <DashboardBodyContent>
- *           This is Content
- *         </DashboardBodyContent>
- *       </DashboardBodyMain>
- *     </DashboardBody>
+ *       <DashboardBodyContent>
+ *         This is Content
+ *       </DashboardBodyContent>
+ *     </DashboardBodyMain>
  *   </Dashboard>
  * )
  * ```
@@ -44,7 +43,7 @@ export const Dashboard = ({
 
       <DashboardNavigationDesktop className="hidden md:flex md:flex-shrink-0" />
 
-      {children}
+      <DashboardBody>{children}</DashboardBody>
     </div>
   </DashboardProvider>
 )

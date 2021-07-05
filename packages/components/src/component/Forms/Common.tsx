@@ -4,7 +4,7 @@ import type { FieldError } from 'react-hook-form'
 import { Error } from './Error'
 import { Label } from './Label'
 
-interface CommonFieldProps {
+interface FormCommonFieldProps {
   children: ReactNode
   className?: string
   labelClass?: string
@@ -15,7 +15,7 @@ interface CommonFieldProps {
   fieldWrapperClassName?: string
 }
 
-export const CommonField = ({
+export const FormCommonField = ({
   children,
   className,
   labelClass,
@@ -24,7 +24,7 @@ export const CommonField = ({
   htmlFor,
   noShadow,
   fieldWrapperClassName,
-}: CommonFieldProps): JSX.Element => (
+}: FormCommonFieldProps): JSX.Element => (
   <div className={className}>
     <Label className={labelClass} htmlFor={htmlFor}>
       {label}

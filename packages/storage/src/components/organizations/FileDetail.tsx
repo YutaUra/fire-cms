@@ -1,11 +1,13 @@
+import { useFireCmsRouterLinkComponent } from '@fire-cms/router'
 import { toast } from '@fire-cms/toast'
+import { useFireCmsUserPublicProfile } from '@fire-cms/user'
 import { Dialog, Transition } from '@headlessui/react'
 import { format } from 'date-fns'
 import filesize from 'filesize'
 import type { FullMetadata } from 'firebase/storage'
 import { deleteObject } from 'firebase/storage'
 import type { MouseEventHandler, ReactNode } from 'react'
-import { Fragment, useCallback } from 'react'
+import { Fragment, useCallback, useMemo } from 'react'
 import { HiX } from 'react-icons/hi'
 import { MdOpenInNew } from 'react-icons/md'
 import { useFileDownloadUrl } from '../../hooks'
@@ -68,61 +70,75 @@ interface FileDetailInfomationProps {
 const FileDetailInfomation = ({
   file,
   downloadUrl,
-}: FileDetailInfomationProps): JSX.Element => (
-  <>
-    <div>
-      {file.contentType?.startsWith('image/') && (
-        // @tailwindcss/aspect にて補充される
-        // eslint-disable-next-line tailwindcss/no-custom-classname
-        <div className="block overflow-hidden w-full rounded-lg aspect-w-10 aspect-h-7">
-          <img alt="" className="object-cover" src={downloadUrl} />
-        </div>
-      )}
+}: FileDetailInfomationProps): JSX.Element => {
+  const uploadedBy = useMemo(() => file.customMetadata?.uploadedBy, [file])
+  const [profile] = useFireCmsUserPublicProfile(uploadedBy ?? '')
+  const Link = useFireCmsRouterLinkComponent()
 
-      <div className="flex justify-between items-start mt-4">
-        <div>
-          <h2 className="text-lg font-medium text-gray-900">
-            <span className="sr-only">Details for </span>
+  return (
+    <>
+      <div>
+        {file.contentType?.startsWith('image/') && (
+          // @tailwindcss/aspect にて補充される
+          // eslint-disable-next-line tailwindcss/no-custom-classname
+          <div className="block overflow-hidden w-full rounded-lg aspect-w-10 aspect-h-7">
+            <img alt="" className="object-cover" src={downloadUrl} />
+          </div>
+        )}
 
-            <span>{file.name}</span>
-          </h2>
+        <div className="flex justify-between items-start mt-4">
+          <div>
+            <h2 className="text-lg font-medium text-gray-900">
+              <span className="sr-only">Details for </span>
 
-          <p className="text-sm font-medium text-gray-500">
-            {filesize(file.size)}
-          </p>
+              <span>{file.name}</span>
+            </h2>
+
+            <p className="text-sm font-medium text-gray-500">
+              {filesize(file.size)}
+            </p>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div>
-      <h3 className="font-medium text-gray-900">Information</h3>
+      <div>
+        <h3 className="font-medium text-gray-900">Information</h3>
 
-      <dl className="mt-2 border-t border-b border-gray-200 divide-y divide-gray-200">
-        <div className="flex justify-between py-3 text-sm font-medium">
-          <dt className="text-gray-500">Uploaded by</dt>
+        <dl className="mt-2 border-t border-b border-gray-200 divide-y divide-gray-200">
+          <div className="flex justify-between py-3 text-sm font-medium">
+            <dt className="text-gray-500">Uploaded by</dt>
 
-          <dd className="text-gray-900">Marie Culver</dd>
-        </div>
+            <dd className="text-gray-900">
+              {uploadedBy ? (
+                <Link href={`/users/${uploadedBy}`}>
+                  {profile?.name ?? 'unknown'}
+                </Link>
+              ) : (
+                'unknown'
+              )}
+            </dd>
+          </div>
 
-        <div className="flex justify-between py-3 text-sm font-medium">
-          <dt className="text-gray-500">Created</dt>
+          <div className="flex justify-between py-3 text-sm font-medium">
+            <dt className="text-gray-500">Created</dt>
 
-          <dd className="text-gray-900">
-            {format(new Date(file.timeCreated), 'yyyy-MM-dd')}
-          </dd>
-        </div>
+            <dd className="text-gray-900">
+              {format(new Date(file.timeCreated), 'yyyy-MM-dd')}
+            </dd>
+          </div>
 
-        <div className="flex justify-between py-3 text-sm font-medium">
-          <dt className="text-gray-500">Last modified</dt>
+          <div className="flex justify-between py-3 text-sm font-medium">
+            <dt className="text-gray-500">Last modified</dt>
 
-          <dd className="text-gray-900">
-            {format(new Date(file.updated), 'yyyy-MM-dd')}
-          </dd>
-        </div>
-      </dl>
-    </div>
-  </>
-)
+            <dd className="text-gray-900">
+              {format(new Date(file.updated), 'yyyy-MM-dd')}
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </>
+  )
+}
 
 interface FileDetailProps {
   open: boolean

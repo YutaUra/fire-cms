@@ -1,6 +1,5 @@
 import {
   Dashboard,
-  DashboardBody,
   DashboardBodyContent,
   DashboardBodyHeader,
   DashboardBodyMain,
@@ -10,18 +9,16 @@ import { FireCmsLoginRequired } from '@fire-cms/layout'
 
 export const Forbidden = (): JSX.Element => (
   <Dashboard>
-    <DashboardBody>
-      <DashboardBodyHeader />
+    <DashboardBodyHeader />
 
-      <DashboardBodyMain>
-        <FireCmsLoginRequired>
-          <DashboardBodyTitle>403 Forbidden</DashboardBodyTitle>
+    <DashboardBodyMain>
+      <FireCmsLoginRequired>
+        <DashboardBodyTitle>403 Forbidden</DashboardBodyTitle>
 
-          <DashboardBodyContent>
-            該当のページにアクセスする権限がありません
-          </DashboardBodyContent>
-        </FireCmsLoginRequired>
-      </DashboardBodyMain>
-    </DashboardBody>
+        <DashboardBodyContent>
+          該当のページにアクセスする権限がありません
+        </DashboardBodyContent>
+      </FireCmsLoginRequired>
+    </DashboardBodyMain>
   </Dashboard>
 )

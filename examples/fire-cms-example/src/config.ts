@@ -7,6 +7,7 @@ import { FireCmsPlugin } from '@fire-cms/plugin'
 import { FireCmsRouterPlugin } from '@fire-cms/router'
 import { FireCmsStoragePlugin } from '@fire-cms/storage'
 import { FireCmsToastPlugin } from '@fire-cms/toast'
+import { FireCmsUserPlugin } from '@fire-cms/user'
 import { LinkComponent, useNextRouter } from '@fire-cms/with-nextjs'
 
 export const plugins: FireCmsPlugin[] = [
@@ -32,4 +33,5 @@ export const plugins: FireCmsPlugin[] = [
   new FireCmsPermissionPlugin({}),
   new FireCmsStoragePlugin(),
   new FireCmsBlogPlugin(),
+  new FireCmsUserPlugin(),
 ]

@@ -1,24 +1,10 @@
 import { useFirebaseApp } from '@fire-cms/firebase-config'
-import type { StorageReference, StorageService } from 'firebase/storage'
-import { getStorage, listAll, ref, uploadString } from 'firebase/storage'
+import type { StorageReference } from 'firebase/storage'
+import { listAll, ref } from 'firebase/storage'
 import { join } from 'path'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { FIRECMS_STORAGE } from '../const'
-
-export const useFireCmsStorage = (): StorageService => {
-  const app = useFirebaseApp()
-  const storage = getStorage(app)
-  return storage
-}
-
-export const useStorageRef = (url: string): StorageReference => {
-  const storage = useFireCmsStorage()
-  const storageRef = useMemo(
-    () => ref(storage, join(FIRECMS_STORAGE, url)),
-    [storage, url],
-  )
-  return storageRef
-}
+import { useFireCmsStorage, useFireCmsStorageUpload } from './base'
 
 export const useCreateStorageRef = (): ((path: string) => StorageReference) => {
   const storage = useFireCmsStorage()
@@ -27,6 +13,15 @@ export const useCreateStorageRef = (): ((path: string) => StorageReference) => {
     [storage],
   )
   return createStorageRef
+}
+
+export const useStorageRef = (url: string): StorageReference => {
+  const createStorageRef = useCreateStorageRef()
+  const storageRef = useMemo(
+    () => createStorageRef(url),
+    [createStorageRef, url],
+  )
+  return storageRef
 }
 
 export const useStorageFiles = (
@@ -70,34 +65,43 @@ export const useCreateFolder = (): ((
 ) => Promise<void>) => {
   const createStorageRef = useCreateStorageRef()
 
+  const { uploadString } = useFireCmsStorageUpload()
+
   const createFolder = useCallback(
     async (path: string, folderName: string) => {
       const storageRef = createStorageRef(join(path, folderName, '.keep'))
       await uploadString(storageRef, 'keep')
     },
-    [createStorageRef],
+    [createStorageRef, uploadString],
   )
 
   return createFolder
 }
 
-export const useFileDownloadUrl = (path: string): string => {
+export const useCreateFileDownloadUrl = (): ((path: string) => string) => {
   const app = useFirebaseApp()
 
-  const fixedPath = useMemo(() => {
-    const path1 = path.startsWith('/') ? path.slice(1) : path
-    const path2 = path1.startsWith(FIRECMS_STORAGE)
-      ? path1
-      : `${FIRECMS_STORAGE}/${path1}`
-    return path2
-  }, [path])
-
-  const url = useMemo(
-    () =>
-      `https://firebasestorage.googleapis.com/v0/b/${
+  const createFileDownloadUrl = useCallback(
+    (path: string) => {
+      const path1 = path.startsWith('/') ? path.slice(1) : path
+      const path2 = path1.startsWith(FIRECMS_STORAGE)
+        ? path1
+        : `${FIRECMS_STORAGE}/${path1}`
+      return `https://firebasestorage.googleapis.com/v0/b/${
         app.options.storageBucket
-      }/o/${encodeURIComponent(fixedPath)}?alt=media`,
-    [app.options.storageBucket, fixedPath],
+      }/o/${encodeURIComponent(path2)}?alt=media`
+    },
+    [app.options.storageBucket],
+  )
+
+  return createFileDownloadUrl
+}
+
+export const useFileDownloadUrl = (path: string): string => {
+  const createFileDownloadUrl = useCreateFileDownloadUrl()
+  const url = useMemo(
+    () => createFileDownloadUrl(path),
+    [createFileDownloadUrl, path],
   )
   return url
 }

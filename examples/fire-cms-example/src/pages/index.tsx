@@ -20,6 +20,7 @@ const IndexEntry = () => {
       <NextLink href="/admin">
         <a>管理ページ</a>
       </NextLink>
+      {/* <Test /> */}
     </div>
   )
 }

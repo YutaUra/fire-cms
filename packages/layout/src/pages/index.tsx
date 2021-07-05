@@ -1,6 +1,5 @@
 import {
   Dashboard,
-  DashboardBody,
   DashboardBodyContent,
   DashboardBodyHeader,
   DashboardBodyMain,
@@ -10,16 +9,14 @@ import { FireCmsLoginRequired } from '../effect'
 
 export const Index = (): JSX.Element => (
   <Dashboard>
-    <DashboardBody>
-      <DashboardBodyHeader />
+    <DashboardBodyHeader />
 
-      <DashboardBodyMain>
-        <FireCmsLoginRequired>
-          <DashboardBodyTitle>Dashboard</DashboardBodyTitle>
+    <DashboardBodyMain>
+      <FireCmsLoginRequired>
+        <DashboardBodyTitle>Dashboard</DashboardBodyTitle>
 
-          <DashboardBodyContent />
-        </FireCmsLoginRequired>
-      </DashboardBodyMain>
-    </DashboardBody>
+        <DashboardBodyContent />
+      </FireCmsLoginRequired>
+    </DashboardBodyMain>
   </Dashboard>
 )

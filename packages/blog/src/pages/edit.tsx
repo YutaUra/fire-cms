@@ -1,8 +1,4 @@
-import {
-  Dashboard,
-  DashboardBody,
-  DashboardBodyHeader,
-} from '@fire-cms/components'
+import { Dashboard, DashboardBodyHeader } from '@fire-cms/components'
 import { FireCmsLoginRequired } from '@fire-cms/layout'
 import { FireCmsPermissionRequied } from '@fire-cms/permission'
 import { BlogEditMain } from '../components/pages/edit'
@@ -14,16 +10,14 @@ interface BlogEditProps {
 
 export const BlogEdit = ({ blogId }: BlogEditProps): JSX.Element => (
   <Dashboard>
-    <DashboardBody>
-      <DashboardBodyHeader />
+    <DashboardBodyHeader />
 
-      <FireCmsLoginRequired>
-        <FireCmsPermissionRequied>
-          <FetchBlogs />
+    <FireCmsLoginRequired>
+      <FireCmsPermissionRequied>
+        <FetchBlogs />
 
-          <BlogEditMain blogId={blogId} />
-        </FireCmsPermissionRequied>
-      </FireCmsLoginRequired>
-    </DashboardBody>
+        <BlogEditMain blogId={blogId} />
+      </FireCmsPermissionRequied>
+    </FireCmsLoginRequired>
   </Dashboard>
 )

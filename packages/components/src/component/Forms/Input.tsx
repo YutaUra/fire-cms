@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import type { ComponentPropsWithoutRef, ReactNode } from 'react'
 import type { FieldValues, Path, UseControllerProps } from 'react-hook-form'
 import { useController } from 'react-hook-form'
-import { CommonField } from './Common'
+import { FormCommonField } from './Common'
 
 export type FormInputProps<T extends FieldValues> = UseControllerProps<
   T,
@@ -39,7 +39,7 @@ export const FormInput = <T extends FieldValues>({
   })
 
   return (
-    <CommonField
+    <FormCommonField
       className={className}
       error={error}
       fieldWrapperClassName={fieldWrapperClassName}
@@ -48,6 +48,7 @@ export const FormInput = <T extends FieldValues>({
       labelClass={labelClass}
     >
       <input
+        type="text"
         // `value`の中身がundefinedとなる場合があり、あとから文字列が挿入される場合にReactがWarningを出す
         // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         value={value ?? ''}
@@ -58,6 +59,6 @@ export const FormInput = <T extends FieldValues>({
           'block flex-1 w-full min-w-0 sm:text-sm rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500',
         ])}
       />
-    </CommonField>
+    </FormCommonField>
   )
 }

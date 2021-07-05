@@ -9,7 +9,7 @@ import type {
   UseControllerProps,
 } from 'react-hook-form'
 import { useController } from 'react-hook-form'
-import { CommonField } from './Common'
+import { FormCommonField } from './Common'
 
 export type FormToggleProps<
   T extends FieldValues,
@@ -57,7 +57,7 @@ export const FormToggle = <T extends FieldValues, V extends FieldPath<T>>({
   }, [enabled, name, setValue, isSubmitSuccessful])
 
   return (
-    <CommonField
+    <FormCommonField
       className={className}
       error={error}
       htmlFor={name}
@@ -87,6 +87,6 @@ export const FormToggle = <T extends FieldValues, V extends FieldPath<T>>({
           )}
         />
       </Switch>
-    </CommonField>
+    </FormCommonField>
   )
 }

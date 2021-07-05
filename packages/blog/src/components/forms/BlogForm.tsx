@@ -33,7 +33,6 @@ export const BlogForm = ({
         <FormInput
           control={control}
           defaultValue={defaultValues?.title}
-          inputProps={{ type: 'text' }}
           label="タイトル"
           name="title"
         />

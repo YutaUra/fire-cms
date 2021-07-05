@@ -4,28 +4,26 @@ import type {
   ComponentPropsWithoutRef,
   ReactNode,
 } from 'react'
-import { useCallback, useEffect } from 'react'
+import { useCallback } from 'react'
 import type {
   FieldPath,
   FieldValues,
-  SetValueConfig,
   UseControllerProps,
 } from 'react-hook-form'
 import { useController } from 'react-hook-form'
-import { CommonField } from './Common'
+import { FormCommonField } from './Common'
 
 export type FormFileProps<
   T extends FieldValues,
   V extends FieldPath<T>,
 > = UseControllerProps<T, V> & {
-  defaultValue?: null
-} & {
-  setValue: (name: V, value: FileList | null, options?: SetValueConfig) => void
   className?: string
   inputProps?: Omit<ComponentPropsWithoutRef<'input'>, 'onChange' | 'value'>
   fieldWrapperClassName?: string
   label: ReactNode
   labelClass?: string
+} & {
+  defaultValue?: null
 }
 
 export const FormFile = <T extends FieldValues, V extends FieldPath<T>>({
@@ -39,12 +37,10 @@ export const FormFile = <T extends FieldValues, V extends FieldPath<T>>({
   label,
   labelClass,
   fieldWrapperClassName,
-  setValue,
 }: FormFileProps<T, V>): JSX.Element => {
   const {
-    field: { value, ...field },
+    field: { onChange },
     fieldState: { error },
-    formState: { isSubmitSuccessful },
   } = useController({
     control,
     defaultValue,
@@ -55,17 +51,13 @@ export const FormFile = <T extends FieldValues, V extends FieldPath<T>>({
 
   const handleChange = useCallback<ChangeEventHandler<HTMLInputElement>>(
     (event) => {
-      setValue(name, event.target.files)
+      onChange(event.target.files)
     },
-    [name, setValue],
+    [onChange],
   )
 
-  useEffect(() => {
-    setValue(name, null)
-  }, [setValue, name, isSubmitSuccessful])
-
   return (
-    <CommonField
+    <FormCommonField
       className={className}
       error={error}
       fieldWrapperClassName={fieldWrapperClassName}
@@ -73,14 +65,6 @@ export const FormFile = <T extends FieldValues, V extends FieldPath<T>>({
       label={label}
       labelClass={labelClass}
     >
-      <input
-        hidden
-        {...field}
-        // `value`の中身がundefinedとなる場合があり、あとから文字列が挿入される場合にReactがWarningを出す
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-        value={value ?? ''}
-      />
-
       <input
         {...inputProps}
         className={clsx([
@@ -90,6 +74,6 @@ export const FormFile = <T extends FieldValues, V extends FieldPath<T>>({
         onChange={handleChange}
         type="file"
       />
-    </CommonField>
+    </FormCommonField>
   )
 }

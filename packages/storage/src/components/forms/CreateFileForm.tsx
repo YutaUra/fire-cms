@@ -23,10 +23,9 @@ export const CreateFileForm = ({
   onSubmit,
   onClose,
 }: CreateFileFormProps): JSX.Element => {
-  const { handleSubmit, reset, setValue, control } =
-    useForm<CreateFileFormField>({
-      resolver: zodResolver(CreateFileFormSchema),
-    })
+  const { handleSubmit, reset, control } = useForm<CreateFileFormField>({
+    resolver: zodResolver(CreateFileFormSchema),
+  })
 
   const onSubmitWrapper = useCallback<SubmitHandler<CreateFileFormField>>(
     async (data) => {
@@ -52,7 +51,6 @@ export const CreateFileForm = ({
         inputProps={{ multiple: false }}
         label="ファイル"
         name="files"
-        setValue={setValue}
       />
 
       <div className="flex space-x-2">

@@ -1,3 +1,4 @@
+import image from '@rollup/plugin-image'
 import typescript from '@rollup/plugin-typescript'
 import path from 'path'
 import builtins from 'rollup-plugin-node-builtins'
@@ -37,6 +38,7 @@ export default (option) => {
       output: { format: 'cjs', sourcemap: true, dir: path.dirname(pkg.main) },
       plugins: [
         builtins(),
+        image(),
         typescript({ declaration: false, jsx: 'react-jsx' }),
       ],
     },
@@ -48,6 +50,7 @@ export default (option) => {
       output: { format: 'es', sourcemap: true, dir: path.dirname(pkg.module) },
       plugins: [
         builtins(),
+        image(),
         typescript({ declaration: false, jsx: 'react-jsx' }),
       ],
     },

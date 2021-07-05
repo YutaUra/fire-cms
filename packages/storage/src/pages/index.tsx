@@ -1,8 +1,4 @@
-import {
-  Dashboard,
-  DashboardBody,
-  DashboardBodyHeader,
-} from '@fire-cms/components'
+import { Dashboard, DashboardBodyHeader } from '@fire-cms/components'
 import { FireCmsLoginRequired } from '@fire-cms/layout'
 import { FireCmsPermissionRequied } from '@fire-cms/permission'
 import { StorageIndexMain } from '../components/pages/index'
@@ -13,14 +9,12 @@ interface StorageIndexProps {
 
 export const StorageIndex = ({ path }: StorageIndexProps): JSX.Element => (
   <Dashboard>
-    <DashboardBody>
-      <DashboardBodyHeader />
+    <DashboardBodyHeader />
 
-      <FireCmsLoginRequired>
-        <FireCmsPermissionRequied>
-          <StorageIndexMain path={path} />
-        </FireCmsPermissionRequied>
-      </FireCmsLoginRequired>
-    </DashboardBody>
+    <FireCmsLoginRequired>
+      <FireCmsPermissionRequied>
+        <StorageIndexMain path={path} />
+      </FireCmsPermissionRequied>
+    </FireCmsLoginRequired>
   </Dashboard>
 )
