@@ -1,6 +1,6 @@
 {
   "name": "@fire-cms/user-profile",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "> TODO: description",
   "author": "YutaUra <yuuta3594@outlook.jp>",
   "homepage": "https://github.com/YutaUra/fire-cms#readme",
@@ -27,9 +27,9 @@
     "url": "https://github.com/YutaUra/fire-cms/issues"
   },
   "dependencies": {
-    "@fire-cms/auth": "^0.0.2",
-    "@fire-cms/zod-firestore": "^0.0.2",
-    "@fire-cms/firebase-firestore": "^0.0.2",
+    "@fire-cms/auth": "^0.0.3",
+    "@fire-cms/firebase-firestore": "^0.0.3",
+    "@fire-cms/zod-firestore": "^0.0.3",
     "zod": "^3.3.4"
   },
   "peerDependencies": {
