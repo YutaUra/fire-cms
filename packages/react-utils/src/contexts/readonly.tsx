@@ -1,27 +1,15 @@
-import type { Context, ReactNode } from 'react'
+import type { Context, FC } from 'react'
 import { createContext, useContext } from 'react'
 
-export const createReadonly = <T,>(
-  initial: T,
-): {
-  Provider: ({
-    value,
-    children,
-  }: {
-    children?: ReactNode
-    value: T
-  }) => JSX.Element
+interface ReadonlyContext<T> {
+  Provider: FC<{ value: T }>
   context: Context<T>
   useValue: () => T
-} => {
+}
+
+export const createReadonlyContext = <T,>(initial: T): ReadonlyContext<T> => {
   const context = createContext<T>(initial)
-  const Provider = ({
-    value,
-    children,
-  }: {
-    children?: ReactNode
-    value: T
-  }): JSX.Element => (
+  const Provider: FC<{ value: T }> = ({ value, children }) => (
     <context.Provider value={value}>{children}</context.Provider>
   )
   const useValue = (): T => useContext(context)

@@ -1,20 +1,23 @@
-import { createReadonly, createUseState } from '@fire-cms/react-utils'
+import {
+  createReadonlyContext,
+  createUseStateContext,
+} from '@fire-cms/react-utils'
 import type { ReactNode } from 'react'
 
 const {
   Provider: FireCmsPermissionIsStaffProvider,
   useSetValue: useFireCmsPermissionSetIsStaffContext,
   useValue: useFireCmsPermissionIsStaff,
-} = createUseState(false)
+} = createUseStateContext(false)
 const {
   Provider: FireCmsPermissionIsStaffIsReadyProvider,
   useSetValue: useFireCmsPermissionSetIsStaffIsReady,
   useValue: useFireCmsPermissionIsStaffIsReady,
-} = createUseState(false)
+} = createUseStateContext(false)
 const {
   Provider: FireCmsPermissionForbiddenUrlProvider,
   useValue: useFireCmsPermissionForbiddenUrl,
-} = createReadonly<string>('403')
+} = createReadonlyContext<string>('403')
 
 interface FireCmsPermissionProviderProps {
   children: ReactNode

@@ -1,4 +1,4 @@
-import { createUseState } from '@fire-cms/react-utils'
+import { createUseStateContext } from '@fire-cms/react-utils'
 import type { ReactNode } from 'react'
 import { useCallback } from 'react'
 import type { FireCmsBlogBlogModel } from './schema'
@@ -7,17 +7,17 @@ const {
   Provider: FireCmsBlogBlogsProvider,
   useSetValue: _useFireCmsBlogSetBlogs,
   useValue: useFireCmsBlogBlogs,
-} = createUseState<FireCmsBlogBlogModel[]>([])
+} = createUseStateContext<FireCmsBlogBlogModel[]>([])
 const {
   Provider: FireCmsBlogIsLoadingProvider,
   useSetValue: useFireCmsBlogSetIsLoading,
   useValue: useFireCmsBlogIsLoading,
-} = createUseState<boolean>(false)
+} = createUseStateContext<boolean>(false)
 const {
   Provider: FireCmsBlogIsInitializedProvider,
   useSetValue: useFireCmsBlogSetIsInitialized,
   useValue: useFireCmsBlogIsInitialized,
-} = createUseState<boolean>(false)
+} = createUseStateContext<boolean>(false)
 
 type Provider = (props: { children?: ReactNode }) => JSX.Element
 

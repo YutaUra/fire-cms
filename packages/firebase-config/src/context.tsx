@@ -1,4 +1,4 @@
-import { createReadonly } from '@fire-cms/react-utils'
+import { createReadonlyContext } from '@fire-cms/react-utils'
 import type { FirebaseApp, FirebaseOptions } from 'firebase/app'
 import { getApps, initializeApp } from 'firebase/app'
 import type { ReactNode } from 'react'
@@ -6,7 +6,7 @@ import type { ReactNode } from 'react'
 const {
   Provider: FirebaseConfigFirebaseOptionsProvider,
   useValue: useFirebaseConfig,
-} = createReadonly<FirebaseOptions>({})
+} = createReadonlyContext<FirebaseOptions>({})
 
 export interface FirebaseConfigProviderProps {
   children?: ReactNode

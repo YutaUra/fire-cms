@@ -1,5 +1,6 @@
 import { FireCmsAuthPlugin } from '@fire-cms/auth'
 import { FireCmsBlogPlugin } from '@fire-cms/blog'
+import { FireCmsContentsPlugin } from '@fire-cms/content'
 import { FirebaseConfigPlugin } from '@fire-cms/firebase-config'
 import { FireCmsLayoutPlugin } from '@fire-cms/layout'
 import { FireCmsPermissionPlugin } from '@fire-cms/permission'
@@ -36,4 +37,5 @@ export const plugins: FireCmsPlugin[] = [
   new FireCmsBlogPlugin(),
   new FireCmsUserPlugin(),
   new FireCmsUserProfilePlugin(),
+  new FireCmsContentsPlugin(),
 ]

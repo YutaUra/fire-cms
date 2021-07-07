@@ -1,14 +1,14 @@
-import { createReadonly } from '@fire-cms/react-utils'
+import { createReadonlyContext } from '@fire-cms/react-utils'
 import type { ReactNode } from 'react'
 
 const {
   Provider: FireCmsLayoutRedirectToProvider,
   useValue: useFireCmsLayoutRedirectTo,
-} = createReadonly<string>('/')
+} = createReadonlyContext<string>('/')
 const {
   Provider: FireCmsLayoutNotFoundComponent,
   useValue: useFireCmsLayoutNotFoundComponent,
-} = createReadonly<() => JSX.Element | null>(() => null)
+} = createReadonlyContext<() => JSX.Element | null>(() => null)
 
 interface FireCmsLayoutProviderProps {
   children: ReactNode

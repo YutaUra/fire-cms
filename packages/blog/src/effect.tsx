@@ -5,6 +5,7 @@ import { collection, getDocs } from 'firebase/firestore'
 import { useEffect } from 'react'
 import { BLOGS_COLLECTION } from './const'
 import {
+  useFireCmsBlogIsInitialized,
   useFireCmsBlogSetBlogs,
   useFireCmsBlogSetIsInitialized,
   useFireCmsBlogSetIsLoading,
@@ -16,10 +17,11 @@ export const FetchBlogs = (): null => {
   const { replaceAllBlogs } = useFireCmsBlogSetBlogs()
   const setIsLoading = useFireCmsBlogSetIsLoading()
   const setIsInitialized = useFireCmsBlogSetIsInitialized()
+  const isInitialized = useFireCmsBlogIsInitialized()
   const db = useFireCmsFirestore()
 
   useEffect(() => {
-    if (!isStaff) return
+    if (!isStaff || isInitialized) return
     const main = async (): Promise<void> => {
       setIsLoading(true)
       try {
@@ -42,6 +44,13 @@ export const FetchBlogs = (): null => {
       }
     }
     void main()
-  }, [db, isStaff, replaceAllBlogs, setIsInitialized, setIsLoading])
+  }, [
+    db,
+    isInitialized,
+    isStaff,
+    replaceAllBlogs,
+    setIsInitialized,
+    setIsLoading,
+  ])
   return null
 }

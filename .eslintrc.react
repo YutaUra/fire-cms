@@ -20,7 +20,9 @@
       {
         "allowAliases": "always",
         "allowCallbacks": "always",
-        "allowLiterals": "always"
+        "allowLiterals": "always",
+        "allowMappedTypes": "always",
+        "allowConditionalTypes": "always"
       }
     ],
     "react/require-default-props": "off",

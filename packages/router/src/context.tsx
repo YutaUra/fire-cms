@@ -1,4 +1,4 @@
-import { createReadonly } from '@fire-cms/react-utils'
+import { createReadonlyContext } from '@fire-cms/react-utils'
 import type { AnchorHTMLAttributes, DetailedHTMLProps, ReactNode } from 'react'
 import { useCallback } from 'react'
 import join from 'url-join'
@@ -10,23 +10,23 @@ export type LinkProps = DetailedHTMLProps<
 export type LinkComponentType = (proos: LinkProps) => JSX.Element | null
 
 const { Provider: FireCmsRouterPushProvider, useValue: useFireCmsRouterPush } =
-  createReadonly<(url: string) => unknown>(() => null)
+  createReadonlyContext<(url: string) => unknown>(() => null)
 const {
   Provider: FireCmsRouterReplaceProvider,
   useValue: useFireCmsRouterReplace,
-} = createReadonly<(url: string) => unknown>(() => null)
+} = createReadonlyContext<(url: string) => unknown>(() => null)
 const {
   Provider: FireCmsRouterQueryProvider,
   useValue: useFireCmsRouterQuery,
-} = createReadonly<Record<string, string>>({})
+} = createReadonlyContext<Record<string, string>>({})
 const {
   Provider: FireCmsRouterBasePathProvider,
   useValue: useFireCmsRouterBasePath,
-} = createReadonly<string>('/')
+} = createReadonlyContext<string>('/')
 const {
   Provider: FireCmsRouterLinkComponentProvider,
   useValue: useFireCmsRouterLinkComponent,
-} = createReadonly<LinkComponentType>(() => null)
+} = createReadonlyContext<LinkComponentType>(() => null)
 
 interface FireCmsRouterProviderProps {
   push: (url: string) => void

@@ -1,0 +1,57 @@
+{
+  "name": "@fire-cms/content",
+  "version": "0.0.3",
+  "description": "> TODO: description",
+  "author": "YutaUra <yuuta3594@outlook.jp>",
+  "homepage": "https://github.com/YutaUra/fire-cms#readme",
+  "license": "MIT",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "browser": "dist/umd/index.js",
+  "types": "dist/types/index.d.ts",
+  "directories": {},
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YutaUra/fire-cms.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/YutaUra/fire-cms/issues"
+  },
+  "dependencies": {
+    "@fire-cms/auth": "^0.0.3",
+    "@fire-cms/components": "^0.0.3",
+    "@fire-cms/firebase-firestore": "^0.0.3",
+    "@fire-cms/permission": "^0.0.3",
+    "@fire-cms/plugin": "^0.0.3",
+    "@fire-cms/react-utils": "^0.0.3",
+    "@fire-cms/router": "^0.0.3",
+    "@fire-cms/toast": "^0.0.3",
+    "@fire-cms/user-profile": "^0.0.3",
+    "@fire-cms/zod-firestore": "^0.0.3",
+    "@hookform/resolvers": "^2.6.0",
+    "clsx": "^1.1.1",
+    "date-fns": "^2.22.1",
+    "firebase": "^9.0.0-beta.6",
+    "lodash.sortby": "^4.7.0",
+    "react-hook-form": "^7.10.1",
+    "react-icons": "^4.2.0",
+    "zod": "^3.3.4"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2"
+  },
+  "devDependencies": {
+    "@types/lodash.sortby": "^4.7.6",
+    "@types/react": "^17.0.11",
+    "react": "^17.0.2"
+  }
+}

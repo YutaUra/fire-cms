@@ -1,4 +1,4 @@
-import { createUseState } from '@fire-cms/react-utils'
+import { createUseStateContext } from '@fire-cms/react-utils'
 import type { FC } from 'react'
 import { useCallback, useMemo } from 'react'
 import type { FireCmsUserProfilePublicProfileModel } from './schema'
@@ -7,12 +7,14 @@ const {
   Provider: FireCmsUserProfileMyPublicProfileProvider,
   useSetValue: useFireCmsUserProfileSetMyPublicProfile,
   useValue: useFireCmsUserProfileMyPublicProfile,
-} = createUseState<FireCmsUserProfilePublicProfileModel | null>(null)
+} = createUseStateContext<FireCmsUserProfilePublicProfileModel | null>(null)
 const {
   Provider: FireCmsUserProfileAllPublicProfileProvider,
   useSetValue: useFireCmsUserProfileSetAllPublicProfile,
   useValue: useFireCmsUserProfileAllPublicProfile,
-} = createUseState<Map<string, FireCmsUserProfilePublicProfileModel>>(new Map())
+} = createUseStateContext<Map<string, FireCmsUserProfilePublicProfileModel>>(
+  new Map(),
+)
 
 export const FireCmsUserProfileCommonProvider: FC = ({ children }) => (
   <FireCmsUserProfileAllPublicProfileProvider>

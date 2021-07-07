@@ -1,5 +1,5 @@
 import { useFirebaseApp } from '@fire-cms/firebase-config'
-import { createUseState } from '@fire-cms/react-utils'
+import { createUseStateContext } from '@fire-cms/react-utils'
 import type { Auth, User } from 'firebase/auth'
 import { getAuth } from 'firebase/auth'
 import type { ReactNode } from 'react'
@@ -11,12 +11,12 @@ const {
   Provider: FireCmsAuthUserProvider,
   useSetValue: useFireCmsSetAuthUser,
   useValue: useFireCmsAuthUser,
-} = createUseState<FireCmsAuthUser>(null)
+} = createUseStateContext<FireCmsAuthUser>(null)
 const {
   Provider: FireCmsAuthIsReadyProvider,
   useSetValue: useFireCmsSetIsReady,
   useValue: useFireCmsAuthIsReady,
-} = createUseState<boolean>(false)
+} = createUseStateContext<boolean>(false)
 
 interface FireCmsAuthProviderProps {
   children: ReactNode

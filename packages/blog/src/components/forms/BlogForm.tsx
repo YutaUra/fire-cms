@@ -22,7 +22,7 @@ export const BlogForm = ({
   onCancel,
   onDelete,
 }: BlogFormProps): JSX.Element => {
-  const { handleSubmit, setValue, control } = useForm<BlogFormField>({
+  const { handleSubmit, control } = useForm<BlogFormField>({
     defaultValues,
     resolver: zodResolver(BlogFormSchema),
   })
@@ -50,7 +50,6 @@ export const BlogForm = ({
           defaultValue={defaultValues?.isPublic}
           label="公開設定"
           name="isPublic"
-          setValue={setValue}
         />
       </div>
 
